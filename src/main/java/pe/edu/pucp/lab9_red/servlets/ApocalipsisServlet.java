@@ -2,6 +2,7 @@ package pe.edu.pucp.lab9_red.servlets;
 
 import pe.edu.pucp.lab9_red.daos.Mision1Dao;
 import pe.edu.pucp.lab9_red.daos.Mision2Dao;
+import pe.edu.pucp.lab9_red.daos.Mision3Dao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ public class ApocalipsisServlet extends HttpServlet {
         String action= request.getParameter("action")==null ? "listar": request.getParameter("action");
         Mision1Dao mision1Dao= new Mision1Dao();
         Mision2Dao mision2Dao= new Mision2Dao();
+        Mision3Dao mision3Dao= new Mision3Dao();
         RequestDispatcher requestDispatcher;
         switch (action){
             case "listar":
@@ -34,6 +36,10 @@ public class ApocalipsisServlet extends HttpServlet {
                 requestDispatcher = request.getRequestDispatcher("menuSupervivientes.jsp");
                 requestDispatcher.forward(request,response);
                 break;
+            case "Virus":
+                request.setAttribute("listaVirus", mision3Dao.listarVirus());
+                requestDispatcher=request.getRequestDispatcher("menuVirus.jsp");
+                requestDispatcher.forward(request,response);
         }
 
     }
