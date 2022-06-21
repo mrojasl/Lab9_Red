@@ -78,7 +78,7 @@
                 <td><%=virus.getIdVariante()%></td>
                 <td><%=virus.getVariante()%></td>
                 <td><%=virus.getCasosEncontrados()%></td>
-                <td><button type="button" class="btn btn-outline-light">Erradicar Variante</button></td>
+                <td><a href="<%=request.getContextPath()%>/?action=ErradicarVariante&idVariante=<%=virus.getIdVariante()%>&idVirus=<%=virus.getIdVirus()%>"><button type="button" class="btn btn-outline-light">Erradicar Variante</button></a></td>
             </tr>
             <%}%>
 

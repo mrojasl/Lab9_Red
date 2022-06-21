@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
-@WebServlet(name = "Apocalipsis", value = "")
+@WebServlet(name = "Apocalipsis", urlPatterns = {"","/Apocalipsis"})
 public class ApocalipsisServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,6 +43,18 @@ public class ApocalipsisServlet extends HttpServlet {
                 request.setAttribute("cantidadVirus",mision3Dao.cantVirusActivos());
                 requestDispatcher=request.getRequestDispatcher("menuVirus.jsp");
                 requestDispatcher.forward(request,response);
+                break;
+            case  "ErradicarVariante":
+                int idVariante = Integer.parseInt(request.getParameter("idVariante"));
+                mision3Dao.EliminarZombiesDeVariante(idVariante);
+                int idVirus = Integer.parseInt(request.getParameter("idVirus"));
+                mision3Dao.EliminarVariante(idVariante);
+                ArrayList<Virus> listaVariantes =  mision3Dao.obtenerVariantesDeVirus(idVirus);
+                if (listaVariantes.size()==0){
+                    mision3Dao.EliminarVirus(idVirus);
+                }
+                response.sendRedirect(request.getContextPath() + "/?action=Virus");
+
         }
 
     }
