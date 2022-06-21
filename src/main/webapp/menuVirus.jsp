@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listaVirus" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Virus>"/>
+<jsp:useBean id="listaVariantes" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Virus>"/>
+<jsp:useBean id="cantidadVirus" scope="request" type="java.lang.Integer"/>
 <html>
 <head>
     <link rel="icon" href="icon.png">
@@ -53,7 +54,7 @@
         <br>
 
         <div class="alert alert-danger" role="alert">
-            <p class="cantidadVirusActivos" STYLE="text-align: center;font-size:20px;font-weight: bold"><i class="bi bi-radioactive"></i> Cantidad de Virus Activos: <%=45%> <i class="bi bi-radioactive"></i></p>
+            <p class="cantidadVirusActivos" STYLE="text-align: center;font-size:20px;font-weight: bold"><i class="bi bi-radioactive"></i> Cantidad de Virus Activos: <%=cantidadVirus%> <i class="bi bi-radioactive"></i></p>
         </div>
     </div>
 
@@ -70,7 +71,7 @@
         </tr>
         </thead>
         <tbody>
-            <%for (Virus virus : listaVirus){%>
+            <%for (Virus virus : listaVariantes){%>
             <tr>
                 <td><%=virus.getIdVirus()%></td>
                 <td><%=virus.getNombre()%></td>
@@ -111,21 +112,25 @@
                 <h5 class="modal-title" id="exampleModalLabel">Añadir Variante</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="<%=request.getContextPath()%>/Virus?a=anadeVariante">
+            <form method="POST" action="<%=request.getContextPath()%>/?action=AgregarVariante">
                 <div class="modal-body" >
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="row px-2" >
-                                            <div class="form-group col-md-6"><label class="form-control-label">Virus al que pertenece</label> <input type="text"  id="nvirus" name="nvirus" required="required" placeholder="Virus">  </div>
-                                            <div class="form-group col-md-6"> <label for="nvariante" class="form-control-label">Nombre de la variante</label> <input type="text"  id="nvariante" name="nvariante" required="required" placeholder="Variante" > </div>
+                                        <div class="col-lg-5">
+                                            <div class="row px-2" >
+                                                <div class="form-group col-md-6">
+                                                    <label class="form-control-label">Virus al que pertenece</label> <input type="text"  id="nvirus" name="nvirus" required="required" placeholder="Virus">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="nvariante" class="form-control-label">Nombre de la variante</label> <input type="text"  id="nvariante" name="nvariante" required="required" placeholder="Variante">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-warning" >Añadir  Variante</button>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-warning" >Añadir  Variante</button>
+                                        </div>
                                 </div>
                             </div>
                         </div>
