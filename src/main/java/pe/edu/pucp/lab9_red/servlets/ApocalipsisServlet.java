@@ -63,7 +63,18 @@ public class ApocalipsisServlet extends HttpServlet {
                 try{
                     double peso= Double.parseDouble(peso0);
                     double fuerza= Double.parseDouble(fuerza0);
-                    mision2Dao.actualizarHumano(nombre, idpareja, idSuper, fuerza, peso);
+                    String parejaDisponible=mision2Dao.obtenerIdPareja(idpareja);
+                    if(parejaDisponible!=null){
+                        if(parejaDisponible.equals(idSuper)){
+                            mision2Dao.actualizarHumano(nombre, idpareja, idSuper, fuerza, peso);
+                        }else{
+                            //Debemos hacer una advertencia
+                            System.out.println("La pareja no esta disponible");
+                        }
+                    }else{
+                        mision2Dao.actualizarHumano(nombre, idpareja, idSuper, fuerza, peso);
+                    }
+
                 }catch (NumberFormatException e){
                     System.out.println("Error al convertir dato ApocalipsisServlet |Post: ActualizarSuper");
                 }
