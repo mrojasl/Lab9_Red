@@ -136,8 +136,8 @@
                                 <div class="row">
                                     <div class="col-lg-5">
                                         <div class="row px-2" >
-                                            <div class="form-group col-md-6"> <label for="nnombre">Nombres</label><input type="text" class="form-control" id="nnombre" name="nnombre"  placeholder="nombres" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="napellido">Apellidos</label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="apellidos" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="nnombre">Nombre</label><input type="text" class="form-control" id="nnombre" name="nnombre"  placeholder="nombre" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="napellido">Apellido</label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="apellido" required="required"> </div>
                                         </div>
                                         <div class="row px-2">
                                             <div class="form-group col-md-6"> <label for="nidentificacion">N°identificacion</label><input type="number" class="form-control" id="nidentificacion" name="nidentificacion" min="1" placeholder="identificador" required="required"> </div>
