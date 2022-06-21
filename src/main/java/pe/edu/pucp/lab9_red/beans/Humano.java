@@ -39,7 +39,7 @@ public class Humano {
         this.sexo = sexo;
     }
 
-    public boolean isEstadoZombie() {
+    public boolean getEstadoZombie() {
         return estadoZombie;
     }
 

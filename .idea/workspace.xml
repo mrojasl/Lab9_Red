@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="lab9_red:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/BaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision1Dao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Servlet mision1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Humano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Humano.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/menuHumanos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuHumanos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +115,21 @@
       <workItem from="1655747743917" duration="1000" />
       <workItem from="1655773834449" duration="594000" />
     </task>
+    <task id="LOCAL-00001" summary="Servlet mision1">
+      <created>1655786601522</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655786601522</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Servlet mision1">
+      <created>1655786613024</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655786613025</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,5 +145,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Servlet mision1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet mision1" />
   </component>
 </project>
