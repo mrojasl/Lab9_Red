@@ -26,12 +26,12 @@ public class Mision3Dao extends BaseDao{
                 v.setNombre(rs.getString(2));
                 v.setIdVariante(rs.getInt(3));
                 v.setVariante(rs.getString(4));
-                v.setCasosEncontrados(rs.getInt(4));
+                v.setCasosEncontrados(rs.getInt(5));
                 listaVirus.add(v);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Error");
+            System.out.println("Error Mision 3");
         }
         return listaVirus;
     }

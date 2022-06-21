@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Virus" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaVirus" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Virus>"/>
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -67,14 +68,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-        <td>1</td>
-        <td>Australia</td>
-        <td>42011</td>
-        <td>Andrew Redmayne</td>
-        <td>3300000</td>
-        <td><button type="button" class="btn btn-outline-light">Erradicar Variante</button></td>
-        </tr>
+            <%for (Virus virus : listaVirus){%>
+            <tr>
+                <td><%=virus.getIdVirus()%></td>
+                <td><%=virus.getNombre()%></td>
+                <td><%=virus.getIdVariante()%></td>
+                <td><%=virus.getVariante()%></td>
+                <td><%=virus.getCasosEncontrados()%></td>
+                <td><button type="button" class="btn btn-outline-light">Erradicar Variante</button></td>
+            </tr>
+            <%}%>
 
 
 
