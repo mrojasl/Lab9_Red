@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `lab9_zombies` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `lab9_zombies` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `lab9_zombies`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
@@ -33,7 +33,7 @@ CREATE TABLE `efectividad` (
   KEY `fk_TiposDeZombie_has_Objetos_TiposDeZombie1_idx` (`idTiposDeZombie`),
   CONSTRAINT `fk_TiposDeZombie_has_Objetos_Objetos1` FOREIGN KEY (`idObjetos`) REFERENCES `objetos` (`idObjetos`),
   CONSTRAINT `fk_TiposDeZombie_has_Objetos_TiposDeZombie1` FOREIGN KEY (`idTiposDeZombie`) REFERENCES `tiposdezombie` (`idTiposDeZombie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `efectividad` (
 
 LOCK TABLES `efectividad` WRITE;
 /*!40000 ALTER TABLE `efectividad` DISABLE KEYS */;
-INSERT INTO `efectividad` VALUES (2,83,85.3),(4,84,94.7),(5,85,43);
+INSERT INTO `efectividad` VALUES (2,8,85.3),(4,9,94.7),(5,10,43);
 /*!40000 ALTER TABLE `efectividad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ CREATE TABLE `humanos` (
   `sexo` varchar(45) NOT NULL,
   `estadoZ` tinyint NOT NULL,
   PRIMARY KEY (`idHumanos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,35 @@ INSERT INTO `humanos` VALUES ('22284294663','Hildagarde','Janz','Femenino',0),('
 UNLOCK TABLES;
 
 --
+-- Table structure for table `inventario`
+--
+
+DROP TABLE IF EXISTS `inventario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `inventario` (
+  `idHumanos` varchar(11) NOT NULL,
+  `idObjetos` int NOT NULL,
+  `cantidad` int NOT NULL,
+  PRIMARY KEY (`idHumanos`,`idObjetos`),
+  KEY `fk_Superviviente_has_Objetos_Objetos1_idx` (`idObjetos`),
+  KEY `fk_Superviviente_has_Objetos_Superviviente1_idx` (`idHumanos`),
+  CONSTRAINT `fk_Superviviente_has_Objetos_Objetos1` FOREIGN KEY (`idObjetos`) REFERENCES `objetos` (`idObjetos`),
+  CONSTRAINT `fk_Superviviente_has_Objetos_Superviviente1` FOREIGN KEY (`idHumanos`) REFERENCES `superviviente` (`idHumanos`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `inventario`
+--
+
+LOCK TABLES `inventario` WRITE;
+/*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
+INSERT INTO `inventario` VALUES ('22284294663',1,1),('22669537645',1,1),('23527985769',1,2),('25386728587',1,1),('26963689549',1,1),('29828699697',1,2),('32337875575',1,2),('32337875575',9,1),('36222322447',1,1),('36222322447',10,1),('38259789676',1,1),('42227969488',1,1),('42688586254',1,1),('44255976832',1,2),('44255976832',2,1),('44255976832',3,30),('47956784468',1,2),('47956784468',2,1),('47956784468',3,30),('49898582824',1,1),('49898582824',2,1),('49898582824',3,30),('52738823569',1,1),('52738823569',2,1),('52738823569',3,30),('52738823569',4,1),('52738823569',10,1),('52738823569',11,30),('53783442832',1,1),('53783442832',2,1),('53783442832',3,30),('55755356375',1,1),('55755356375',2,1),('55755356375',3,30),('58369739422',1,2),('58369739422',2,1),('58369739422',3,30),('58388536423',2,1),('58388536423',3,30),('62399444986',2,1),('62399444986',3,30),('62863535924',2,1),('62863535924',3,30),('62863535924',10,1),('68223839734',9,1),('68633922345',10,1),('73363255845',10,1),('74366865544',10,1),('74485799575',1,1),('74485799575',9,1),('74768779865',1,1),('75252387624',1,1),('76364964436',1,1),('76379937799',1,1),('85298663945',1,1),('86232698272',1,1),('86464324645',1,1),('86665387646',1,1),('87389594245',1,1),('87389594245',9,1),('89933765523',1,1),('98665777546',1,1),('99462783892',1,1),('99834859239',1,1);
+/*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `objetos`
 --
 
@@ -83,14 +112,10 @@ DROP TABLE IF EXISTS `objetos`;
 CREATE TABLE `objetos` (
   `idObjetos` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
-  `cantidad` int NOT NULL,
   `masa` double NOT NULL,
   `vacuna` tinyint NOT NULL,
-  `idHumanos` varchar(11) DEFAULT NULL,
-  PRIMARY KEY (`idObjetos`),
-  KEY `fk_Objetos_Superviviente1_idx` (`idHumanos`),
-  CONSTRAINT `fk_Objetos_Superviviente1` FOREIGN KEY (`idHumanos`) REFERENCES `superviviente` (`idHumanos`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`idObjetos`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +124,7 @@ CREATE TABLE `objetos` (
 
 LOCK TABLES `objetos` WRITE;
 /*!40000 ALTER TABLE `objetos` DISABLE KEYS */;
-INSERT INTO `objetos` VALUES (1,'Botella de agua',1,0.5,0,'22284294663'),(2,'Botella de agua',1,0.5,0,'22669537645'),(3,'Botella de agua',1,0.5,0,'23527985769'),(4,'Botella de agua',1,0.5,0,'25386728587'),(5,'Botella de agua',1,0.5,0,'26963689549'),(6,'Botella de agua',1,0.5,0,'29828699697'),(7,'Botella de agua',1,0.5,0,'32337875575'),(8,'Botella de agua',1,0.5,0,'36222322447'),(9,'Botella de agua',1,0.5,0,'38259789676'),(10,'Botella de agua',1,0.5,0,'42227969488'),(11,'Botella de agua',1,0.5,0,'42688586254'),(12,'Botella de agua',1,0.5,0,'44255976832'),(13,'Botella de agua',1,0.5,0,'47956784468'),(14,'Botella de agua',1,0.5,0,'49898582824'),(15,'Botella de agua',1,0.5,0,'52738823569'),(16,'Botella de agua',1,0.5,0,'53783442832'),(17,'Botella de agua',1,0.5,0,'55755356375'),(18,'Botella de agua',1,0.5,0,'58369739422'),(19,'Pistola Glock',1,0.75,0,'42688586254'),(20,'Pistola Glock',1,0.75,0,'49898582824'),(21,'Pistola Glock',1,0.75,0,'47956784468'),(22,'Pistola Glock',1,0.75,0,'44255976832'),(23,'Pistola Glock',1,0.75,0,'52738823569'),(24,'Pistola Glock',1,0.75,0,'53783442832'),(25,'Pistola Glock',1,0.75,0,'55755356375'),(26,'Pistola Glock',1,0.75,0,'58369739422'),(27,'Pistola Glock',1,0.75,0,'58388536423'),(28,'Pistola Glock',1,0.75,0,'62399444986'),(29,'Pistola Glock',1,0.75,0,'62863535924'),(30,'Pistola Glock',1,0.75,0,'62942735724'),(31,'Balas de pistola',27,0.216,0,'49898582824'),(32,'Balas de pistola',5,0.04,0,'58369739422'),(33,'Balas de pistola',10,0.08,0,'53783442832'),(34,'Balas de pistola',71,0.568,0,'52738823569'),(35,'Balas de pistola',25,0.2,0,'58388536423'),(36,'Balas de pistola',47,0.376,0,'55755356375'),(37,'Balas de pistola',43,0.344,0,'62399444986'),(38,'Balas de pistola',1,0.008,0,'62863535924'),(39,'Rifle de asalto',1,2.97,0,'67464274875'),(40,'Rifle de asalto',1,2.97,0,'68223839734'),(41,'Rifle de asalto',1,2.97,0,'68633922345'),(42,'Rifle de asalto',1,2.97,0,'72368334838'),(43,'Rifle de asalto',1,2.97,0,'73363255845'),(44,'Rifle de asalto',1,2.97,0,'74358658437'),(45,'Balas de rifle',30,5.4,0,'74358658437'),(46,'Balas de rifle',37,6.66,0,'73363255845'),(47,'Balas de rifle',20,3.6,0,'72368334838'),(48,'Balas de rifle',21,3.78,0,'68633922345'),(49,'Balas de rifle',45,8.1,0,'68223839734'),(50,'Balas de rifle',7,1.26,0,'67464274875'),(51,'Hacha',1,2,0,'99834859239'),(52,'Hacha',1,2,0,'99462783892'),(53,'Hacha',1,2,0,'98665777546'),(54,'Hacha',1,2,0,'89933765523'),(55,'Hacha',1,2,0,'87389594245'),(56,'Hacha',1,2,0,'86665387646'),(57,'Hacha',1,2,0,'86464324645'),(58,'Hacha',1,2,0,'86232698272'),(59,'Hacha',1,2,0,'85298663945'),(60,'Hacha',1,2,0,'76379937799'),(61,'Hacha',1,2,0,'76364964436'),(62,'Hacha',1,2,0,'75252387624'),(63,'Hacha',1,2,0,'74768779865'),(64,'Hacha',1,2,0,'74485799575'),(65,'Hacha',1,2,0,'74366865544'),(66,'Hacha',1,2,0,'74358658437'),(67,'Hacha',1,2,0,'73363255845'),(68,'Hacha',1,2,0,'72368334838'),(69,'Hacha',1,2,0,'68633922345'),(70,'Hacha',1,2,0,'68223839734'),(71,'Hacha',1,2,0,'67464274875'),(72,'Hacha',1,2,0,'66224487636'),(73,'Hacha',1,2,0,'64348493244'),(74,'Hacha',1,2,0,'63572349796'),(75,'Hacha',1,2,0,'63347485386'),(76,'Hacha',1,2,0,'62942735724'),(77,'Hacha',1,2,0,'62863535924'),(78,'Hacha',1,2,0,'62399444986'),(79,'Hacha',1,2,0,'58388536423'),(80,'Hacha',1,2,0,'58369739422'),(81,'Biblia',1,0.4,0,NULL),(82,'Calculadora',1,0.1,0,NULL),(83,'Relantizador3000',1,0.2,1,NULL),(84,'Pfizer2020',1,0.1,1,NULL),(85,'Aromas de chamán',1,0.008,1,NULL);
+INSERT INTO `objetos` VALUES (1,'Botella de agua',0.5,0),(2,'Pistola Glock',0.75,0),(3,'Balas de pistola',0.216,0),(4,'Rifle de asalto',2.97,0),(5,'Hacha',2.5,0),(6,'Biblia',0.4,0),(7,'Calculadora',0.1,0),(8,'Relantizador3000',0.2,1),(9,'Pfizer2020',0.1,1),(10,'Aromas de chamán',0.008,1),(11,'Balas de rifle',0.18,0),(12,'Martillo',2.2,0),(13,'Camuflaje',1.2,0);
 /*!40000 ALTER TABLE `objetos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +145,7 @@ CREATE TABLE `superviviente` (
   KEY `fk_Superviviente_Superviviente1_idx` (`idPareja`),
   CONSTRAINT `fk_Superviviente_Humanos1` FOREIGN KEY (`idHumanos`) REFERENCES `humanos` (`idHumanos`),
   CONSTRAINT `fk_Superviviente_Superviviente1` FOREIGN KEY (`idPareja`) REFERENCES `superviviente` (`idHumanos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +169,7 @@ CREATE TABLE `tiposdezombie` (
   `idTiposDeZombie` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idTiposDeZombie`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +196,7 @@ CREATE TABLE `variante` (
   PRIMARY KEY (`idVariante`),
   KEY `fk_Variante_Virus1_idx` (`idVirus`),
   CONSTRAINT `fk_Variante_Virus1` FOREIGN KEY (`idVirus`) REFERENCES `virus` (`idVirus`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +220,7 @@ CREATE TABLE `virus` (
   `idVirus` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idVirus`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +253,7 @@ CREATE TABLE `zombie` (
   CONSTRAINT `fk_Zombie_Humanos1` FOREIGN KEY (`idHumanos`) REFERENCES `humanos` (`idHumanos`),
   CONSTRAINT `fk_Zombie_TiposDeZombie1` FOREIGN KEY (`idTipoZombie`) REFERENCES `tiposdezombie` (`idTiposDeZombie`),
   CONSTRAINT `fk_Zombie_Variante1` FOREIGN KEY (`idVariante`) REFERENCES `variante` (`idVariante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -250,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-21  1:32:46
+-- Dump completed on 2022-06-21 16:24:12

@@ -121,8 +121,15 @@ public class ApocalipsisServlet extends HttpServlet {
                 try{
                     int idSacado = mision3Dao.obtenerIdVirusDeNombre(nombreVirus);
                     ArrayList<Virus> variantesDeIdSacado = mision3Dao.obtenerVariantesDeVirus(idSacado);
-                    mision3Dao.AgregarVariante(nombreVariante,idSacado);
-
+                    int centinela = 0;
+                    for (Virus variante : variantesDeIdSacado){
+                        if (variante.getVariante().equalsIgnoreCase(nombreVariante)) {
+                            centinela++;
+                        }
+                    }
+                    if (centinela==0){
+                        mision3Dao.AgregarVariante(nombreVariante,idSacado);
+                    }
                 }catch (NullPointerException e){
                     System.out.println("Virus no encontrado, creando Virus");
                     mision3Dao.AgregarVirus(nombreVirus);
@@ -130,13 +137,9 @@ public class ApocalipsisServlet extends HttpServlet {
                     mision3Dao.AgregarVariante(nombreVariante,idVirusNuevo);
                 }
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
-
-
-
-
+                break;
 
         }
-
 
     }
 }
