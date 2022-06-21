@@ -92,10 +92,10 @@
       </td>
       <td><%=sp.getSexo()%></td>
       <td>
-          <input type="number" class="form-control" name="peso"   value="<%=sp.getPeso()%>" required="required" min="1">
+          <input type="number" class="form-control" name="peso"   value="<%=sp.getPeso()%>" required="required" min="1" step="any">
       </td>
       <td>
-          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="1">
+          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="1" step="any">
       </td>
       <td>
         <select name="idpareja" class="form-control">
