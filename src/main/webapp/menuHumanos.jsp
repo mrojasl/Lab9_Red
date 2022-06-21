@@ -9,6 +9,7 @@
 <jsp:useBean id="listaHumanos" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Humano>"/>
 <html>
 <head>
+  <link rel="icon" href="icon.png">
   <jsp:include page="header_style.jsp"/>
     <title>Menú de humanos</title>
   <style>

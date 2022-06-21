@@ -4,6 +4,24 @@ public class Virus {
     private int idVirus;
     private String nombre;
     private String variante;
+    private int idVariante;
+    private int casosEncontrados;
+
+    public int getIdVariante() {
+        return idVariante;
+    }
+
+    public void setIdVariante(int idVariante) {
+        this.idVariante = idVariante;
+    }
+
+    public int getCasosEncontrados() {
+        return casosEncontrados;
+    }
+
+    public void setCasosEncontrados(int casosEncontrados) {
+        this.casosEncontrados = casosEncontrados;
+    }
 
     public String getVariante() {
         return variante;
