@@ -205,7 +205,7 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" >Añadir Superviviente</button>
+                    <button type="submit" class="btn btn-primary" >Añadir  Superviviente</button>
                   </div>
                 </div>
               </div>
