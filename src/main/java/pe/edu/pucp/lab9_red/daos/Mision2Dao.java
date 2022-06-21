@@ -51,9 +51,10 @@ public class Mision2Dao extends BaseDao{
     public double hallar_PesoCargado(String idHumano){
         double pesoTotal=0, pesoUnidad;
         int cantidad;
-        String sql="select o.cantidad, o.masa from lab9_zombies.superviviente s  " +
-                "left join lab9_zombies.objetos o on o.idHumanos=s.idHumanos " +
-                "where s.idHumanos=? ";
+        String sql="select i.cantidad, o.masa from superviviente s " +
+                "                left join inventario i on i.idHumanos= s.idHumanos " +
+                "                left join objetos o on o.idObjetos=i.idObjetos " +
+                "                   where s.idHumanos= ?";
         try(Connection conn= this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql);){
             pstmt.setString(1,idHumano);
@@ -169,5 +170,81 @@ public class Mision2Dao extends BaseDao{
             e.printStackTrace();
         }
         return idPareja;
+    }
+
+    public void anadirSuperviviente(String nombre, String apellido, String sexo,double fuerza,double peso, String idpareja){
+        String id= generarIDHumano();
+        anadirHumano(id,nombre,apellido,sexo,false);
+        String sql, sql2;
+        if(!idpareja.equals("Soltero")){
+            sql= "insert into superviviente (idHumanos, peso, fuerza, idPareja) VALUES (?,?,?,?);";
+            try(Connection conn= this.getConnection();
+                PreparedStatement pstmt= conn.prepareStatement(sql);){
+                pstmt.setString(1, id);
+                pstmt.setDouble(2,peso);
+                pstmt.setDouble(3,fuerza);
+                if(!idpareja.equals("Soltero")){
+                    pstmt.setString(4,idpareja);
+                }
+                pstmt.executeUpdate();
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            //Asignamos la nueva relación
+            sql2= "update superviviente set idPareja=? where idHumanos=?";
+            try(Connection conn= this.getConnection();
+                PreparedStatement pstmt= conn.prepareStatement(sql2);){
+                pstmt.setString(1,id);
+                pstmt.setString(2,idpareja);
+                pstmt.executeUpdate();
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else{
+            sql="insert into superviviente (idHumanos, peso, fuerza) VALUES (?,?,?);";
+            try(Connection conn= this.getConnection();
+                PreparedStatement pstmt= conn.prepareStatement(sql);){
+                pstmt.setString(1, id);
+                pstmt.setDouble(2,peso);
+                pstmt.setDouble(3,fuerza);
+                if(!idpareja.equals("Soltero")){
+                    pstmt.setString(4,idpareja);
+                }
+                pstmt.executeUpdate();
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public String generarIDHumano(){
+        String codigo="";
+        String[] letters = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
+        for (int i = 0; i < 11; i++ ) {
+            codigo += letters[(int) Math.round(Math.random() * 15)];
+        }
+        return codigo;
+    }
+
+    public void anadirHumano(String id,String nombre,String apellido,String sexo,boolean estadoZombie){
+        String sql= "insert into humanos (idHumanos, nombre, apellido, sexo, estadoZ) values (?,?,?,?,?)";
+        try(Connection conn = this.getConnection();
+            PreparedStatement pstmt=conn.prepareStatement(sql)){
+            pstmt.setString(1,id);
+            pstmt.setString(2,nombre);
+            pstmt.setString(3,apellido);
+            pstmt.setString(4, sexo);
+            if(estadoZombie==true){
+                pstmt.setInt(5,1);
+            }else{
+                pstmt.setInt(5,0);
+            }
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 }

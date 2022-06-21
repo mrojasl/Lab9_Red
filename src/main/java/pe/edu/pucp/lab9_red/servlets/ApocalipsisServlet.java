@@ -65,14 +65,32 @@ public class ApocalipsisServlet extends HttpServlet {
         Mision3Dao mision3Dao= new Mision3Dao();
         String filtro;
         RequestDispatcher view;
-        //Opcion actualizarSuper
-        String nombre= request.getParameter("nombre");
-        String peso0= request.getParameter("peso");
-        String fuerza0= request.getParameter("fuerza");
-        String idpareja= request.getParameter("idpareja");
+        //Opcion actualizarSuper o añadirSuperviviente
+        String nombre= request.getParameter("nombre");//añaSupe
+        String peso0= request.getParameter("peso");//añaSupe
+        String fuerza0= request.getParameter("fuerza");//añaSupe
+        String idpareja= request.getParameter("idpareja");//añaSupe
         String idSuper= request.getParameter("idSuper");
 
+        //Opcion añadirSuperviviente
+        String apellido= request.getParameter("napellido");
+        String sexo= request.getParameter("sexo");
         switch (action){
+            case "anadirsuperviviente":
+                try{
+                    double peso= Double.parseDouble(peso0);
+                    double fuerza= Double.parseDouble(fuerza0);
+                    mision2Dao.anadirSuperviviente(nombre, apellido, sexo, fuerza, peso, idpareja);
+                }catch (NumberFormatException e){
+                    System.out.println("Error al convertir dato ApocalipsisServlet |Post: anadirsuperviviente");
+                }
+                filtro= request.getParameter("filtroSuper");
+                request.setAttribute("filtroSuper",filtro);
+                request.setAttribute("parejas", mision2Dao.listarSuperviviente(""));
+                request.setAttribute("listaSuper", mision2Dao.listarSuperviviente(filtro));
+                view = request.getRequestDispatcher("menuSupervivientes.jsp");
+                view.forward(request,response);
+                break;
             case "filtrarSuper":
                 filtro= request.getParameter("filtroSuper");
                 request.setAttribute("listaSuper", mision2Dao.listarSuperviviente(filtro));
@@ -96,7 +114,6 @@ public class ApocalipsisServlet extends HttpServlet {
                     }else{
                         mision2Dao.actualizarHumano(nombre, idpareja, idSuper, fuerza, peso);
                     }
-
                 }catch (NumberFormatException e){
                     System.out.println("Error al convertir dato ApocalipsisServlet |Post: ActualizarSuper");
                 }
@@ -120,8 +137,6 @@ public class ApocalipsisServlet extends HttpServlet {
                                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
                             }
                         }
-
-
 
                     }
                 }*/

@@ -1,4 +1,5 @@
-<%@ page import="pe.edu.pucp.lab9_red.beans.Superviviente" %><%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Superviviente" %>
+<%@ page import="pe.edu.pucp.lab9_red.beans.Humano" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0020, 20 de junio del 2022
@@ -96,17 +97,20 @@
           <input type="number" class="form-control" name="peso"   value="<%=sp.getPeso()%>" required="required" min="1" step="any">
       </td>
       <td>
-          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="1" step="any">
+          <%double pesoCargado=Math.round(sp.getPesoCargado()*100)/(100.0);%>
+          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="<%=pesoCargado*9.8%>"  step="any">
       </td>
       <td>
         <select name="idpareja" class="form-control">
           <option value="Soltero" <%=sp.getIdPareja()==null? "selected" : ""%>>Soltero</option>
           <%for(Superviviente pareja: parejas){%>
-          <option value="<%=pareja.getIdHumano()%>" <%=pareja.getIdHumano().equals(sp.getIdPareja())?"selected" : ""%>><%=pareja.getNombre()+" "+pareja.getApellido()%></option>
+            <%if(!pareja.getIdHumano().equals(sp.getIdHumano())){%>
+              <option value="<%=pareja.getIdHumano()%>" <%=pareja.getIdHumano().equals(sp.getIdPareja())?"selected" : ""%>><%=pareja.getNombre()+" "+pareja.getApellido()%></option>
+            <%}%>
           <%}%>
         </select>
       </td>
-      <td><%=Math.round(sp.getPesoCargado()*100)/(100.0)%></td>
+      <td><%=pesoCargado%></td>
       <td><button type="submit" class="btn btn-primary">Actualizar</button></td>
     </tr>
     </form>
@@ -140,7 +144,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Añadir Superviviente</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=anadirsuperviviente">
+      <form method="POST" action="<%=request.getContextPath()%>/?action=anadirsuperviviente">
         <div class="modal-body">
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -148,20 +152,32 @@
                 <div class="row">
                   <div class="col-lg-5">
                     <div class="row px-2">
+                      <input type="hidden" name="filtroSuper" value="<%=filtroSuper%>">
                       <div class="form-group col-md-6"><label class="form-control-label">Apellidos</label> <input type="text"  id="napellido" name="napellido" required="required" placeholder="Apellidos">  </div>
-                      <div class="form-group col-md-6"> <label for="nnombre" class="form-control-label">Nombre(s)</label> <input type="text"  id="nnombre" name="nnombre" required="required" placeholder="Nombre" > </div>
+                      <div class="form-group col-md-6"> <label for="nnombre" class="form-control-label">Nombre(s)</label> <input type="text"  id="nnombre" name="nombre" required="required" placeholder="Nombre" > </div>
                     </div>
                     <div class="row px-2">
-                      <div class="form-group col-md-6"> <label class="form-control-label">N°identificacion</label> <input type="number" id="nidentificacion" name="nidentificacion" required="required" placeholder="identificador"> </div>
-                      <div class="form-group col-md-6"> <label for="nsexo">Sexo</label><input type="text" class="form-control" id="nsexo" name="nsexo"  placeholder="Sexo"> </div>
+                      <div class="form-group col-md-6"> <label class="form-control-label">Peso(en KG)</label> <input type="number"  id="npeso" name="peso" required="required" min="1" step="any" placeholder="peso"> </div>
+                      <div class="form-group col-md-6"> <label for="nfuerza">Fuerza(en N)</label><input type="number" class="form-control" id="fuerza" required="required" name="fuerza" min="1" step="any" placeholder="Fuerza"></div>
                     </div>
                     <div class="row px-2">
-                      <div class="form-group col-md-6"> <label class="form-control-label">Peso(en KG)</label> <input type="number"  id="npeso" name="npeso" required="required" min="1" step="any" placeholder="peso"> </div>
-                      <div class="form-group col-md-6"> <label for="nfuerza">Fuerza(en N)</label><input type="number" class="form-control" id="nfuerza" name="nfuerza" min="1" step="any" placeholder="Fuerza"> </div>
-                    </div>
-                    <div class="row px-2">
-                      <div class="form-group col-md-6"> <label class="form-control-label">Peso Cargado(en KG)</label> <input type="number"  id="npesocargado" name="npesocargado" required="required" min="1" placeholder="pesocargado"> </div>
-                      <div class="form-group col-md-6"> <label for="npareja">Pareja(Opcional)</label><input type="text" class="form-control" id="npareja" name="npareja"   placeholder="Pareja Opcional"> </div>
+                      <div class="form-group col-md-6"> <label for="nsexo">Sexo</label>
+                        <select id="nsexo" name="sexo" class="form-control">
+                          <option value="Masculino">Masculino</option>
+                          <option value="Femenino">Femenino</option>
+                          <option value="Otro" >otro</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-6"> <label for="npareja">Pareja(Opcional)</label>
+                        <select name="idpareja" class="form-control">
+                          <option value="Soltero">Soltero</option>
+                          <%for(Superviviente pareja: parejas){%>
+                            <%if(pareja.getIdPareja()==null){%>
+                              <option value="<%=pareja.getIdHumano()%>"><%=pareja.getNombre()+ " "+pareja.getApellido()%></option>
+                            <%}%>
+                          <%}%>
+                        </select>
+                      </div>
                     </div>
                   </div>
                   <div class="modal-footer">
