@@ -92,10 +92,10 @@
       </td>
       <td><%=sp.getSexo()%></td>
       <td>
-          <input type="number" class="form-control" name="peso"   value="<%=sp.getPeso()%>" required="required" min="1">
+          <input type="number" class="form-control" name="peso"   value="<%=sp.getPeso()%>" required="required" min="1" step="any">
       </td>
       <td>
-          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="1">
+          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="1" step="any">
       </td>
       <td>
         <select name="idpareja" class="form-control">
@@ -155,8 +155,8 @@
                       <div class="form-group col-md-6"> <label for="nsexo">Sexo</label><input type="text" class="form-control" id="nsexo" name="nsexo"  placeholder="Sexo"> </div>
                     </div>
                     <div class="row px-2">
-                      <div class="form-group col-md-6"> <label class="form-control-label">Peso(en KG)</label> <input type="number"  id="npeso" name="npeso" required="required" min="1" placeholder="peso"> </div>
-                      <div class="form-group col-md-6"> <label for="nfuerza">Fuerza(en N)</label><input type="number" class="form-control" id="nfuerza" name="nfuerza" min="1"  placeholder="Fuerza"> </div>
+                      <div class="form-group col-md-6"> <label class="form-control-label">Peso(en KG)</label> <input type="number"  id="npeso" name="npeso" required="required" min="1" step="any" placeholder="peso"> </div>
+                      <div class="form-group col-md-6"> <label for="nfuerza">Fuerza(en N)</label><input type="number" class="form-control" id="nfuerza" name="nfuerza" min="1" step="any" placeholder="Fuerza"> </div>
                     </div>
                     <div class="row px-2">
                       <div class="form-group col-md-6"> <label class="form-control-label">Peso Cargado(en KG)</label> <input type="number"  id="npesocargado" name="npesocargado" required="required" min="1" placeholder="pesocargado"> </div>
