@@ -93,11 +93,49 @@ public class Mision2Dao extends BaseDao{
     }
 
     public void actualizarSuper(double fuerza,double peso,String id,String idPareja){
-        String sql;
+        String sql, sql2, sql3;
         if(!idPareja.equals("Soltero")){
+            //Se desea actualizar una relación con una persona
             sql= "update superviviente set peso=?, fuerza=?, idPareja=? where idHumanos=?";
+            String parejaDePareja=obtenerIdPareja(idPareja);
+            if(parejaDePareja==null){
+                parejaDePareja="";
+            }
+            if(!parejaDePareja.equals(id)){
+                //Si la relación no será con la misma persona, la otra persona se le asigna null en su idPareja
+                sql2= "update superviviente set idPareja=null where idHumanos=?";
+                try(Connection conn= this.getConnection();
+                    PreparedStatement pstmt= conn.prepareStatement(sql2);){
+                    pstmt.setString(1,idPareja);
+                    pstmt.executeUpdate();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                //Asignamos la nueva relación
+                sql3= "update superviviente set idPareja=? where idHumanos=?";
+                try(Connection conn= this.getConnection();
+                    PreparedStatement pstmt= conn.prepareStatement(sql3);){
+                    pstmt.setString(1,id);
+                    pstmt.setString(2,idPareja);
+                    pstmt.executeUpdate();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }else{
             sql= "update superviviente set peso=?, fuerza=?, idPareja=null where idHumanos=?";
+            //Si deseo quedarme soltero
+            if(obtenerIdPareja(id)!=null){
+                //Si tenía una relación anteriormente, entonces debo terminar la relación (idPareja de la otra persona==null)
+                sql2= "update superviviente set idPareja=null where idHumanos=?";
+                try(Connection conn= this.getConnection();
+                    PreparedStatement pstmt= conn.prepareStatement(sql2);){
+                    pstmt.setString(1,obtenerIdPareja(id));
+                    pstmt.executeUpdate();
+                }catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         try(Connection conn= this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql);){
@@ -113,6 +151,23 @@ public class Mision2Dao extends BaseDao{
         }catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
+    public String obtenerIdPareja(String idHumano){
+        String idPareja=null;
+        String sql="select s.idPareja from superviviente s where s.idHumanos=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql)){
+            pstmt.setString(1,idHumano);
+            try(ResultSet rs= pstmt.executeQuery()){
+                if(rs.next()){
+                    idPareja= rs.getString(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idPareja;
+    }
 }
