@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaSuper" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Superviviente>"/>
+<jsp:useBean id="filtroSuper" scope="request" type="java.lang.String"/>
+<jsp:useBean id="parejas" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Superviviente>"/>
 <html>
 <head>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -52,18 +54,17 @@
 
     <div class="ml-auto p-2" style="margin-top: -35px">
       <span STYLE="color: white;font-weight: bold">Filtrar por Sexo </span>
-      <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=filtrarsexo">
-        <select id="sexoseleccionado" class="form-control">
-          <option selected>Masculino</option>
-          <option>Femenino</option>
+      <form method="POST" action="<%=request.getContextPath()%>/?action=filtrarSuper">
+        <select id="sexoseleccionado" name="filtroSuper" class="form-control">
+          <option value="Todo" <%=filtroSuper.equals("Todo")? "selected" : ""%>>Todo</option>
+          <option value="Masculino" <%=filtroSuper.equals("Masculino")? "selected" : ""%>>Masculino</option>
+          <option value="Femenino" <%=filtroSuper.equals("Femenino")? "selected" : ""%>>Femenino</option>
+          <option value="Otro" <%=filtroSuper.equals("Otro")? "selected" : ""%>>otro</option>
         </select>
         <button type="submit" class="btn btn-primary">Filtrar</button>
       </form>
     </div>
   </div>
-
-
-
 
 
   <table class="table table-hover table-dark" style="margin-top: 15px">
@@ -76,46 +77,39 @@
       <th scope="col">Fuerza-N-</th>
       <th scope="col">Nombres de la Pareja</th>
       <th scope="col">Peso Cargado-KG-</th>
+      <th scope="col">Actualizar Edición</th>
     </tr>
     </thead>
     <tbody>
     <%for(Superviviente sp :listaSuper){%>
+    <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarSuper">
     <tr>
+      <input type="hidden" name="idSuper" value="<%=sp.getIdHumano()%>">
+      <input type="hidden" name="filtroSuper" value="<%=filtroSuper%>">
       <th scope="row"><%=sp.getIdHumano()%></th>
       <td>
-      <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarnombre">
-        <input type="text" class="form-control" name="nombre" id="nombre"  value="<%=sp.getNombre()+" "+sp.getApellido()%>" required="required">
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-      </form>
+       <input type="text" class="form-control" name="nombre"  value="<%=sp.getNombre()+" "+sp.getApellido()%>" required="required">
       </td>
-
       <td><%=sp.getSexo()%></td>
       <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarpeso">
-          <input type="number" class="form-control" name="peso" id="peso"  value="<%=sp.getPeso()%>" required="required" min="1">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
+          <input type="number" class="form-control" name="peso"   value="<%=sp.getPeso()%>" required="required" min="1">
       </td>
       <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarfuerza">
-          <input type="number" class="form-control" name="fuerza" id="fuerza"  value="<%=sp.getFuerza()%>" required="required" min="1">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
+          <input type="number" class="form-control" name="fuerza" value="<%=sp.getFuerza()%>" required="required" min="1">
       </td>
-      <%if(sp.getnombrePareja()!=null){%>
       <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarpareja">
-          <input type="text" class="form-control" name="pareja" id="pareja"  value="<%=sp.getnombrePareja()%>" required="required">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
+        <select name="idpareja" class="form-control">
+          <option value="Soltero" <%=sp.getIdPareja()==null? "selected" : ""%>>Soltero</option>
+          <%for(Superviviente pareja: parejas){%>
+          <option value="<%=pareja.getIdHumano()%>" <%=pareja.getIdHumano().equals(sp.getIdPareja())?"selected" : ""%>><%=pareja.getNombre()+" "+pareja.getApellido()%></option>
+          <%}%>
+        </select>
       </td>
-      <%}else{%>
-        <td><%=sp.getSexo().equals("Femenino")? "Soltera": "Soltero"%></td>
-      <%}%>
-      <td>12</td>
+      <td><%=Math.round(sp.getPesoCargado()*100)/(100.0)%></td>
+      <td><button type="submit" class="btn btn-primary">Actualizar</button></td>
     </tr>
+    </form>
     <%}%>
-
     </tbody>
   </table>
 
