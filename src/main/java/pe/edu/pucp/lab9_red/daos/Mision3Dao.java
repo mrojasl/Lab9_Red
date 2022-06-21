@@ -132,4 +132,62 @@ public class Mision3Dao extends BaseDao{
             e.printStackTrace();
         }
     }
+
+    public void EliminarZombiesDeVariante(int idVariante){
+        String sql="delete from zombie where idVariante = ?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setInt(1,idVariante);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void EliminarVariante(int idVariante){
+        String sql="delete from variante where idVariante = ?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setInt(1,idVariante);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public int obtenerIdVirusDeIdVariante (int idVariante){
+        Integer idVirus = null;
+        String sql="select idVirus from variante where idVariante=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setInt(1,idVariante);
+
+            try(ResultSet rs= pstmt.executeQuery()){
+                if(rs.next()){
+                    idVirus = rs.getInt(1);
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idVirus;
+    }
+
+    public void EliminarVirus (int idVirus){
+        String sql="delete from virus where idVirus = ?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setInt(1,idVirus);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
