@@ -70,7 +70,7 @@
         <tr>
         <td>1</td>
         <td>Australia</td>
-        <td>4201</td>
+        <td>42011</td>
         <td>Andrew Redmayne</td>
         <td>3300000</td>
         <td><button type="button" class="btn btn-outline-light">Erradicar Variante</button></td>
