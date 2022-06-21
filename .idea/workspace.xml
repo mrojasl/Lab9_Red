@@ -9,10 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Servlet mision1">
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Servlet mision1 completado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Humano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Humano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuHumanos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuHumanos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Superviviente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Superviviente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision1Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision1Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header_style.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header_style.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuSupervivientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuSupervivientes.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +50,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -114,6 +118,7 @@
       <updated>1655747742611</updated>
       <workItem from="1655747743917" duration="1000" />
       <workItem from="1655773834449" duration="594000" />
+      <workItem from="1655790445068" duration="663000" />
     </task>
     <task id="LOCAL-00001" summary="Servlet mision1">
       <created>1655786601522</created>
@@ -129,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655786613025</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Servlet mision1 completado">
+      <created>1655787099115</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655787099115</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +160,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Servlet mision1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Servlet mision1" />
+    <MESSAGE value="Servlet mision1 completado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet mision1 completado" />
   </component>
 </project>

@@ -18,10 +18,16 @@ public class ApocalipsisServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action= request.getParameter("action")==null ? "listar": request.getParameter("action");
         Mision1Dao mision1Dao= new Mision1Dao();
+        RequestDispatcher requestDispatcher;
         switch (action){
             case "listar":
                 request.setAttribute("listaHumanos",mision1Dao.listarHumanos());
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("menuHumanos.jsp");
+                requestDispatcher= request.getRequestDispatcher("menuHumanos.jsp");
+                requestDispatcher.forward(request,response);
+                break;
+            case "Supervivientes":
+                request.setAttribute("listaSuper", mision1Dao.listarSuperviviente());
+                requestDispatcher = request.getRequestDispatcher("menuSupervivientes.jsp");
                 requestDispatcher.forward(request,response);
                 break;
         }

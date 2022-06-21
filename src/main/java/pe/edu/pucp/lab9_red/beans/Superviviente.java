@@ -3,7 +3,7 @@ package pe.edu.pucp.lab9_red.beans;
 public class Superviviente extends Humano{
     private double peso;
     private double fuerza;
-    private String idPareja;
+    private String nombrePareja;
 
     public double getPeso() {
         return peso;
@@ -21,11 +21,11 @@ public class Superviviente extends Humano{
         this.fuerza = fuerza;
     }
 
-    public String getIdPareja() {
-        return idPareja;
+    public String getnombrePareja() {
+        return nombrePareja;
     }
 
-    public void setIdPareja(String idPareja) {
-        this.idPareja = idPareja;
+    public void setnombrePareja(String idPareja) {
+        this.nombrePareja = idPareja;
     }
 }

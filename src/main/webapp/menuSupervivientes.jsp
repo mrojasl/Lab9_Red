@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Superviviente" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0020, 20 de junio del 2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaSuper" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Superviviente>"/>
 <html>
 <head>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -78,78 +79,42 @@
     </tr>
     </thead>
     <tbody>
-
-
-
+    <%for(Superviviente sp :listaSuper){%>
     <tr>
-      <th scope="row">322420696666</th>
+      <th scope="row"><%=sp.getIdHumano()%></th>
       <td>
       <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarnombre">
-        <input type="text" class="form-control" name="nombre" id="nombre"  value="Mickey Mouse" required="required">
+        <input type="text" class="form-control" name="nombre" id="nombre"  value="<%=sp.getNombre()+" "+sp.getApellido()%>" required="required">
         <button type="submit" class="btn btn-primary">Actualizar</button>
       </form>
       </td>
 
-      <td>Masculino</td>
+      <td><%=sp.getSexo()%></td>
       <td>
         <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarpeso">
-          <input type="number" class="form-control" name="peso" id="peso"  value="<%=50%>" required="required" min="1">
+          <input type="number" class="form-control" name="peso" id="peso"  value="<%=sp.getPeso()%>" required="required" min="1">
           <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
       </td>
       <td>
         <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarfuerza">
-          <input type="number" class="form-control" name="fuerza" id="fuerza"  value="<%=500%>" required="required" min="1">
+          <input type="number" class="form-control" name="fuerza" id="fuerza"  value="<%=sp.getFuerza()%>" required="required" min="1">
           <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
       </td>
+      <%if(sp.getnombrePareja()!=null){%>
       <td>
         <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarpareja">
-          <input type="text" class="form-control" name="pareja" id="pareja"  value="Minnie Mouse" required="required">
+          <input type="text" class="form-control" name="pareja" id="pareja"  value="<%=sp.getnombrePareja()%>" required="required">
           <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
       </td>
-
+      <%}else{%>
+        <td><%=sp.getSexo().equals("Femenino")? "Soltera": "Soltero"%></td>
+      <%}%>
       <td>12</td>
-
     </tr>
-
-
-    <tr>
-      <th scope="row">322420696666</th>
-      <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarnombre">
-          <input type="text" class="form-control" name="nombre0" id="nombre0"  value="Minnie Mouse" required="required">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
-      </td>
-
-      <td>Femenino</td>
-      <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarpeso">
-          <input type="number" class="form-control" name="peso0" id="peso0"  value="<%=50%>" required="required" min="1">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
-      </td>
-      <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarfuerza">
-          <input type="number" class="form-control" name="fuerza0" id="fuerza0"  value="<%=500%>" required="required" min="1">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
-      </td>
-      <td>
-        <form method="POST" action="<%=request.getContextPath()%>/Supervivientes?a=actualizarpareja">
-          <input type="text" class="form-control" name="pareja0" id="pareja0"  value="Mickey Mouse" required="required">
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </form>
-      </td>
-
-      <td>12</td>
-
-    </tr>
-
-
-
+    <%}%>
 
     </tbody>
   </table>

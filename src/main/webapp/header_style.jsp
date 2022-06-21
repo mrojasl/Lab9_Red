@@ -19,7 +19,7 @@
 <nav class="navbar navbar-light" style="background:#484f4f;">
     <h1 class="glow" style="color: white; ">Apocalipsis Zombie⠀<img class="hazard" src="biohazard.png" alt="DNA" style="width:35px;height:35px; opacity: 1;margin-top: -13px" ></h1>
     <div class="nav2">
-        <a href="#" class="my-1 mx-1"><button type="button" class="btn btn-outline-info">   Humanos <i class="bi bi-person-badge-fill"></i>️</button> </a>
+        <a href="<%=request.getContextPath()+"/?action=Supervivientes"%>" class="my-1 mx-1"><button type="button" class="btn btn-outline-info">   Humanos <i class="bi bi-person-badge-fill"></i>️</button> </a>
         <a href="#" class="my-1 mx-1"><button type="button" class="btn btn-outline-success"> Supervivientes <i class="bi bi-person-heart"></i>️</button> </a>
         <a href="#" class="my-1 mx-1"><button type="button" class="btn btn-outline-warning"> Virus <i class="bi bi-bug-fill"></i>️</button> </a>
         <a href="#" class="my-1 mx-1"><button type="button" class="btn btn-outline-dark"> Zombies <i class="bi bi-person-x-fill"></i>️</button> </a>
