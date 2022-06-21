@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Humano" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0020, 20 de junio del 2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="listaHumanos" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Humano>"/>
 <html>
 <head>
   <jsp:include page="header_style.jsp"/>
@@ -35,31 +36,18 @@
     </tr>
     </thead>
     <tbody>
+      <%for(Humano humano: listaHumanos){%>
     <tr>
-      <th scope="row">322420696666</th>
-      <td>El Pepe</td>
-      <td>Masculino</td>
-      <td><button type="button" class="btn btn-success" disabled>Superviviente ✅</button></td>
+      <th scope="row"><%=humano.getIdHumano()%></th>
+      <td><%=humano.getNombre()+" "+humano.getApellido()%></td>
+      <td><%=humano.getSexo()%></td>
+      <%if(!humano.getEstadoZombie()){%>
+        <td><button type="button" class="btn btn-success" disabled>Superviviente ✅</button></td>
+      <%}else{%>
+        <td><button type="button" class="btn btn-danger" disabled>Zombie ☣️</button></td>
+      <%}%>
     </tr>
-    <tr>
-      <th scope="row">322420696667</th>
-      <td>La Pepe</td>
-      <td>Femenino</td>
-      <td><button type="button" class="btn btn-danger" disabled>Zombie ☣️</button></td>
-    </tr>
-    <tr>
-      <th scope="row">322420696666</th>
-      <td>El Pepe</td>
-      <td>Masculino</td>
-      <td><button type="button" class="btn btn-success" disabled>Superviviente ✅</button></td>
-    </tr>
-    <tr>
-      <th scope="row">322420696667</th>
-      <td>La Pepe</td>
-      <td>Femenino</td>
-      <td><button type="button" class="btn btn-danger" disabled>Zombie ☣️</button></td>
-    </tr>
-
+      <%}%>
     </tbody>
   </table>
 
