@@ -80,7 +80,6 @@
                 <th scope="col">Número de identificación</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Número de víctimas</th>
-                <th scope="col">Atacar a:</th>
                 <th scope="col">Atacar</th>
 
             </tr>
@@ -94,20 +93,9 @@
                 <td>322</td>
 
                 <td>
-                    <select name="atacarA" class="form-control">
+                    <button type="button" class="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#extraLargeModal" > Atacar </button>
 
 
-                    <option value="humano">asdx</option>
-
-                        <option value="humano1">asd</option>
-
-                    </select>
-
-
-                </td>
-
-                <td>
-                    <button type="submit" class="btn btn-outline-danger" >Atacar</button>
                 </td>
 
 
@@ -127,6 +115,74 @@
 
 
 </div>
+
+
+
+
+
+
+
+<div class="modal fade" id="extraLargeModal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content" STYLE="background-color: rgb(157,138,142)">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><p STYLE="color: white;font-size: 30px"> <strong>Atacar humano</strong></p></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="<%=request.getContextPath()%>/?action=Atacarhumano">
+                <div class="modal-body" >
+
+
+                    <table class="table table-hover table-dark" style="margin-top: 5px">
+
+                        <thead>
+                        <tr>
+                            <th scope="col">Número de identificación</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Nombre de la Pareja</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+
+                            <td>134124124124124124</td>
+                            <td>sdnjkad</td>
+                            <td>nashndankjdbnsa</td>
+
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" >Atacar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
