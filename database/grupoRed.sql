@@ -307,4 +307,7 @@ insert into zombie (idHumanos, idVariante, idTipoZombie, numeroVictimas,fechaDeI
 #Efectividad#
 insert into efectividad (idTiposDeZombie,idObjetos,porcentaje) values
 (2,8,85.3),(4,9,94.7),(5,10,43.0);
+insert into efectividad (idTiposDeZombie, idObjetos, porcentaje)
+values (1,8,60.7),(3,8,80),(4,8,92.5),(5,8,45),(1,9,77),(2,9,33.33),
+(3,9,98.9),(5,9,23.7),(1,10,69.3),(2,10,92.4),(3,10,100), (4,10,89.6);
 
