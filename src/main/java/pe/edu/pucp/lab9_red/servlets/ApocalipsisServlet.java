@@ -1,9 +1,6 @@
 package pe.edu.pucp.lab9_red.servlets;
 
-import pe.edu.pucp.lab9_red.beans.Superviviente;
-import pe.edu.pucp.lab9_red.beans.Variante;
-import pe.edu.pucp.lab9_red.beans.Virus;
-import pe.edu.pucp.lab9_red.beans.Zombie;
+import pe.edu.pucp.lab9_red.beans.*;
 import pe.edu.pucp.lab9_red.daos.*;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Array;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
@@ -259,10 +257,53 @@ public class ApocalipsisServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/?action=Objetos");
                 break;
             case "agregarObjetoComun":
+                ArrayList<Objeto> listaObjetos = mision5Dao.listarObjetos();
                 String nombreObjeto = request.getParameter("nObjeto");
                 double pesoObjeto2 = Double.parseDouble(request.getParameter("nPesoObjeto"));
-                mision5Dao.agregarObjetoNormal(nombreObjeto,pesoObjeto2);
+                String nombreObjetoSE = nombreObjeto.replaceAll(" ", "");
+
+                int ward=0;
+                for (Objeto obj : listaObjetos){
+                    if (nombreObjetoSE.equalsIgnoreCase(obj.getNombre().replaceAll(" ",""))){
+                        ward++;
+                        System.out.println("El objeto ya existe");
+                    }
+                }
+                if (ward==0){
+                    mision5Dao.agregarObjetoNormal(nombreObjeto,pesoObjeto2);
+                }
                 response.sendRedirect(request.getContextPath()+"/?action=Objetos");
+                break;
+            case "agregarObjetoVacuna":
+                ArrayList<Objeto> listaObjetos3 = mision5Dao.listarObjetos();
+                String nombreObjeto3 = request.getParameter("nVacuna");
+                double pesoObjeto3 = Double.parseDouble(request.getParameter("nPesoVacuna"));
+                String nombreObjetoSE3 = nombreObjeto3.replaceAll(" ", "");
+
+                int ward3=0;
+                for (Objeto obj : listaObjetos3){
+                    if (nombreObjetoSE3.equalsIgnoreCase(obj.getNombre().replaceAll(" ",""))){
+                        ward3++;
+                        System.out.println("El objeto ya existe");
+                    }
+                }
+                if (ward3==0){
+                    mision5Dao.agregarObjetoVacuna(nombreObjeto3,pesoObjeto3);
+                }
+                double vDemoledor1 = Double.parseDouble(request.getParameter("vDemoledor1"));
+                double vRapido1 = Double.parseDouble(request.getParameter("vRapido1"));
+                double vNino1 = Double.parseDouble(request.getParameter("vNino1"));
+                double vNormal1 = Double.parseDouble(request.getParameter("vNormal1"));
+                double vOtro1 = Double.parseDouble(request.getParameter("vOtro1"));
+                int idObjeto3 = mision5Dao.obtenerIdObjetoDeNombre(nombreObjeto3);
+                mision5Dao.insertarEfectividad(1,idObjeto3,vDemoledor1);
+                mision5Dao.insertarEfectividad(2,idObjeto3,vRapido1);
+                mision5Dao.insertarEfectividad(3,idObjeto3,vNino1);
+                mision5Dao.insertarEfectividad(4,idObjeto3,vNormal1);
+                mision5Dao.insertarEfectividad(5,idObjeto3,vOtro1);
+
+                response.sendRedirect(request.getContextPath()+"/?action=Objetos");
+
                 break;
         }
 

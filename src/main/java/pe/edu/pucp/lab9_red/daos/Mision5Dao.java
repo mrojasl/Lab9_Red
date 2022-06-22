@@ -136,4 +136,52 @@ public class Mision5Dao extends BaseDao{
             e.printStackTrace();
         }
     }
+    public void agregarObjetoVacuna(String nombre, double peso){
+        String sql="insert into Objetos (nombre,masa,vacuna) values (?,?,1)";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setString(1,nombre);
+            pstmt.setDouble(2,peso);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int obtenerIdObjetoDeNombre(String nombre){
+        int idObjeto=1;
+        String sql="select idObjetos from Objetos where nombre=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setString(1,nombre);
+
+            try(ResultSet rs= pstmt.executeQuery()){
+                if(rs.next()){
+                    idObjeto = rs.getInt(1);
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idObjeto;
+    }
+    public void insertarEfectividad(int idZombie, int idObjeto, double porcentaje){
+        String sql="insert into efectividad (idTiposDeZombie,idObjetos,porcentaje) values\n" +
+                "(?,?,?)";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setInt(1,idZombie);
+            pstmt.setInt(2,idObjeto);
+            pstmt.setDouble(3,porcentaje);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

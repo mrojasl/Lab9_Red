@@ -2,5 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision3Dao.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision5Dao.java" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
