@@ -3,10 +3,7 @@ package pe.edu.pucp.lab9_red.servlets;
 import pe.edu.pucp.lab9_red.beans.Variante;
 import pe.edu.pucp.lab9_red.beans.Virus;
 import pe.edu.pucp.lab9_red.beans.Zombie;
-import pe.edu.pucp.lab9_red.daos.Mision1Dao;
-import pe.edu.pucp.lab9_red.daos.Mision2Dao;
-import pe.edu.pucp.lab9_red.daos.Mision3Dao;
-import pe.edu.pucp.lab9_red.daos.Mision4Dao;
+import pe.edu.pucp.lab9_red.daos.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +25,7 @@ public class ApocalipsisServlet extends HttpServlet {
         Mision2Dao mision2Dao= new Mision2Dao();
         Mision3Dao mision3Dao= new Mision3Dao();
         Mision4Dao mision4Dao= new Mision4Dao();
+        Mision5Dao mision5Dao= new Mision5Dao();
         RequestDispatcher requestDispatcher;
         switch (action){
             case "listar":
@@ -60,6 +58,8 @@ public class ApocalipsisServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
                 break;
             case "Objetos":
+                request.setAttribute("listaObjetos",mision5Dao.listarObjetos());
+                request.setAttribute("listaEfectividad",mision5Dao.listarEfectividad());
                 requestDispatcher=request.getRequestDispatcher("menuObjetos.jsp");
                 requestDispatcher.forward(request,response);
 

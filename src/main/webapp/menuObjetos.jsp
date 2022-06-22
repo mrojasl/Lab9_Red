@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Objeto" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -60,59 +60,58 @@
             <th scope="col">Nombre del objeto</th>
             <th scope="col">Peso(KG)</th>
             <th scope="col">Tipo</th>
-            <th scope="col">Mostrar efectividad</th>
+            <th scope="col">Mostrar efectividad de cura</th>
 
         </tr>
         </thead>
         <tbody>
+            <%for (Objeto objeto : listaObjetos){%>
 
-        <tr>
-            <td>Botella de agua</td>
+            <tr>
+                <td>
+                    <%=objeto.getNombre()%>
+                </td>
 
-            <td>
-                <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
-                    <input type="number" class="form-control" name="Peso" value="<%=10%>" required="required" min="0" step="any">
-                    <button type="submit" class="btn btn-info" >Actualizar</button>
-                </form>
-            </td>
-            <td>Objeto</td>
-            <td> </td>
-
-
-        </tr>
-        <tr>
-            <td>Aromas de chamán</td>
-            <td>
-                <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
-                    <input type="number" class="form-control" name="Peso" value="<%=0.08%>" required="required" min="0" max="0.5" step="any">
-                    <button type="submit" class="btn btn-info" >Actualizar</button>
-                </form>
-            </td>
-            <td>Vacuna</td>
-            <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo">Efectividad</button>
-                <div id="demo" class="collapse">
-
-                    <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad">
-                        <label for="vDemoledor" class="form-control-label"></label>
-                        <input type="number" class="form-control" id="vDemoledor" name="vDemoledor" value="<%=10%>" required="required" min="0" step="any">
-                        <br>
-                        <input type="number" class="form-control" name="vRapido" value="<%=10%>" required="required" min="0" max="100" step="any">
-                        <br>
-                        <input type="number" class="form-control" name="vNiño" value="<%=10%>" required="required" min="0" max="100" step="any">
-                        <br>
-                        <input type="number" class="form-control" name="vNormal" value="<%=10%>" required="required" min="0" max="100" step="any">
-                        <br>
-                        <input type="number" class="form-control" name="vOtro" value="<%=10%>" required="required" min="0" max="100" step="any">
-                        (Valores desde 0 hasta el 100% )
-                        <br>
+                <td>
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
+                        <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" step="any">
                         <button type="submit" class="btn btn-info" >Actualizar</button>
                     </form>
-                </div>
-            </td>
+                </td>
+
+                <td>
+                    <%if(objeto.getVacuna()==0){%>Objeto<%}else{%>Vacuna<%}%>
+                </td>
+
+                <td>
+                    <%if (objeto.getVacuna()==0){ }
+                    else{%>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo">Efectividad</button>
+                    <div id="demo" class="collapse">
+
+                        <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad">
+                            <label for="vDemoledor" class="form-control-label"></label>
+                            <input type="number" class="form-control" id="vDemoledor" name="vDemoledor" value="<%=10%>" required="required" min="0" step="any">
+                            <br>
+                            <input type="number" class="form-control" name="vRapido" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <br>
+                            <input type="number" class="form-control" name="vNiño" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <br>
+                            <input type="number" class="form-control" name="vNormal" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <br>
+                            <input type="number" class="form-control" name="vOtro" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            (Valores desde 0 hasta el 100% )
+                            <br>
+                            <button type="submit" class="btn btn-info" >Actualizar</button>
+                        </form>
+                    </div>
+                    <%}%>
+                </td>
 
 
-        </tr>
+            </tr>
 
+            <%}%>
         </tbody>
     </table>
 
