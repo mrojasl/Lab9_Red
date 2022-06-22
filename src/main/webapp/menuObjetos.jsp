@@ -97,7 +97,7 @@
                 </td>
 
                 <td>
-                    <%if(objeto.getVacuna()){%>Objeto<%}else{%>Vacuna<%}%>
+                    <%if(objeto.getVacuna()){%>Vacuna<%}else{%>Objeto<%}%>
                 </td>
 
                 <td>
@@ -191,7 +191,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Añadir Objeto Común</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="<%=request.getContextPath()%>/">
+            <form method="POST" action="<%=request.getContextPath()%>/?action=agregarObjetoComun">
                 <div class="modal-body" >
                     <div class="row justify-content-center">
                         <div class="col-lg-12">

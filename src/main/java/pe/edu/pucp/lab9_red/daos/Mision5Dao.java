@@ -122,4 +122,18 @@ public class Mision5Dao extends BaseDao{
         return idTipoZombie;
 
     }
+    public void agregarObjetoNormal(String nombre, double peso){
+        String sql="insert into Objetos (nombre,masa,vacuna) values (?,?,0)";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setString(1,nombre);
+            pstmt.setDouble(2,peso);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
