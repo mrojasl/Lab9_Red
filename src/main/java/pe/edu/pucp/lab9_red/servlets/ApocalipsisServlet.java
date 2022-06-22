@@ -165,7 +165,15 @@ public class ApocalipsisServlet extends HttpServlet {
                 }
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
                 break;
-
+            case "eliminar":
+                mision2Dao.eliminarSuper(idSuper);
+                filtro= request.getParameter("filtroSuper");
+                request.setAttribute("filtroSuper",filtro);
+                request.setAttribute("parejas", mision2Dao.listarSuperviviente(""));
+                request.setAttribute("listaSuper", mision2Dao.listarSuperviviente(filtro));
+                view = request.getRequestDispatcher("menuSupervivientes.jsp");
+                view.forward(request,response);
+                break;
         }
 
     }

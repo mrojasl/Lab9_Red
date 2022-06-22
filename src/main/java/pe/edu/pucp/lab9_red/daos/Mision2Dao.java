@@ -128,14 +128,7 @@ public class Mision2Dao extends BaseDao{
             //Si deseo quedarme soltero
             if(obtenerIdPareja(id)!=null){
                 //Si tenía una relación anteriormente, entonces debo terminar la relación (idPareja de la otra persona==null)
-                sql2= "update superviviente set idPareja=null where idHumanos=?";
-                try(Connection conn= this.getConnection();
-                    PreparedStatement pstmt= conn.prepareStatement(sql2);){
-                    pstmt.setString(1,obtenerIdPareja(id));
-                    pstmt.executeUpdate();
-                }catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                convertirASoltero(obtenerIdPareja(id));
             }
         }
         try(Connection conn= this.getConnection();
@@ -244,6 +237,55 @@ public class Mision2Dao extends BaseDao{
             pstmt.executeUpdate();
         } catch (SQLException e) {
 
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void eliminarSuper(String id){
+        eliminarInventario(id);
+        if(obtenerIdPareja(id)!=null){
+            convertirASoltero(obtenerIdPareja(id));
+        }
+        String sql="delete from superviviente where idHumanos=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        eliminarHumano(id);
+    }
+    public void eliminarHumano(String id){
+        String sql="delete from humanos where idHumanos=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void eliminarInventario(String id){
+        String sql= "delete from inventario where idHumanos=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void convertirASoltero(String id){
+        String sql= "update superviviente set idPareja=null where idHumanos=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setString(1,id);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
             e.printStackTrace();
         }
     }

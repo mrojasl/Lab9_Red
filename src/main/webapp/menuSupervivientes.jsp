@@ -79,7 +79,7 @@
       <th scope="col">Fuerza-N-</th>
       <th scope="col">Nombres de la Pareja</th>
       <th scope="col">Peso Cargado-KG-</th>
-      <th scope="col">Actualizar Edición</th>
+      <th scope="col">Edición | Eliminar</th>
     </tr>
     </thead>
     <tbody>
@@ -111,9 +111,16 @@
         </select>
       </td>
       <td><%=pesoCargado%></td>
-      <td><button type="submit" class="btn btn-primary">Actualizar</button></td>
-    </tr>
+      <td><button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
+          <form method="POST" action="<%=request.getContextPath()%>/?action=eliminar">
+            <input type="hidden" name="idSuper" value="<%=sp.getIdHumano()%>">
+            <input type="hidden" value="<%=filtroSuper%>" name="filtroSuper">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </form>
+      </td>
+    </tr>
+
     <%}%>
     </tbody>
   </table>
