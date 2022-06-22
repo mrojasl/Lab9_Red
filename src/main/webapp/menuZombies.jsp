@@ -130,7 +130,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Añadir Zombie</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="<%=request.getContextPath()%>/Zombies?a=anadeZombie">
+            <form method="POST" action="<%=request.getContextPath()%>/?action=anadeZombie">
                 <div class="modal-body" >
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
@@ -138,13 +138,13 @@
                                 <div class="row">
                                     <div class="col-lg-5">
                                         <div class="row px-2" >
-                                            <div class="form-group col-md-6"> <label for="nnombre">Nombre</label><input type="text" class="form-control" id="nnombre" name="nnombre"  placeholder="nombre" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="napellido">Apellido</label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="apellido" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="nnombre">Nombre</label><input type="text" class="form-control" id="nnombre" name="nombre"  placeholder="Nombre" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="napellido">Apellido</label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="Apellido" required="required"> </div>
                                         </div>
                                         <div class="row px-2">
                                             <div class="form-group col-md-6">
                                                 <label for="tipozombie" class="form-control-label">Tipo de Zombie</label>
-                                                <select id="tipozombie" name="tipozombie" class="form-control">
+                                                <select id="tipozombie" name="idtipozombie" class="form-control">
                                                     <%for(TiposDeZombie tz: tiposZombie){%>
                                                     <option value="<%=tz.getIdTipo()%>"><%=tz.getNombre()%></option>
                                                     <%}%>
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="variante" class="form-control-label">Variante de Virus</label>
-                                                <select id="variante" name="variante" class="form-control">
+                                                <select id="variante" name="idvariante" class="form-control">
                                                     <%for(Variante v: listaVariantes){%>
                                                     <option value="<%=v.getIdVariante()%>"><%=v.getNombre()%></option>
                                                     <%}%>
@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-warning" >Añadir  Zombie</button>
+                                        <button type="submit" class="btn btn-warning" >Añadir Zombie</button>
                                     </div>
                                 </div>
                             </div>

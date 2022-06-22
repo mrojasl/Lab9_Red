@@ -9,16 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Segundo Avance mision4, lisado de Zombies listo, estadisticas automatizadas, falta añadir zombies">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/TiposDeZombie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Variante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Virus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Virus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Zombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision3Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision3Dao.java" afterDir="false" />
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Cambiado de varios Beans, buen uso de Beans en relacion a la estructura de la base de datos.">
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision4Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision4Dao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuVirus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuVirus.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/menuZombies.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuZombies.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655865560009</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Cambiado de varios Beans, buen uso de Beans en relacion a la estructura de la base de datos.">
+      <created>1655869072529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655869072529</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +231,7 @@
     <MESSAGE value="Servlet mision1" />
     <MESSAGE value="Servlet mision1 completado" />
     <MESSAGE value="Segundo Avance mision4, lisado de Zombies listo, estadisticas automatizadas, falta añadir zombies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Segundo Avance mision4, lisado de Zombies listo, estadisticas automatizadas, falta añadir zombies" />
+    <MESSAGE value="Cambiado de varios Beans, buen uso de Beans en relacion a la estructura de la base de datos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambiado de varios Beans, buen uso de Beans en relacion a la estructura de la base de datos." />
   </component>
 </project>

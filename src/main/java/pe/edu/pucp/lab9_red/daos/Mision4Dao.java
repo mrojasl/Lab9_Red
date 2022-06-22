@@ -125,4 +125,45 @@ public class Mision4Dao extends BaseDao{
         }
         return lista;
     }
+    public void anadirZombie(String nombre, String apellido, int idtz, int idvariante, String sexo){
+        String id=generarIDHumano();
+        anadirHumano(id,nombre,apellido,sexo,true);
+        String sql="insert into zombie (fechaDeInfeccion, numeroVictimas,idTipoZombie, idVariante, idHumanos) VALUES (CURRENT_DATE,0,?,?,?);";
+        try(Connection con=this.getConnection();
+            PreparedStatement pstmt=con.prepareStatement(sql);){
+            pstmt.setInt(1,idtz);
+            pstmt.setInt(2,idvariante);
+            pstmt.setString(3,id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public String generarIDHumano(){
+        String codigo="";
+        String[] letters = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
+        for (int i = 0; i < 11; i++ ) {
+            codigo += letters[(int) Math.round(Math.random() * 15)];
+        }
+        return codigo;
+    }
+    public void anadirHumano(String id,String nombre,String apellido,String sexo,boolean estadoZombie){
+        String sql= "insert into humanos (idHumanos, nombre, apellido, sexo, estadoZ) values (?,?,?,?,?)";
+        try(Connection conn = this.getConnection();
+            PreparedStatement pstmt=conn.prepareStatement(sql)){
+            pstmt.setString(1,id);
+            pstmt.setString(2,nombre);
+            pstmt.setString(3,apellido);
+            pstmt.setString(4, sexo);
+            if(estadoZombie==true){
+                pstmt.setInt(5,1);
+            }else{
+                pstmt.setInt(5,0);
+            }
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    }
 }

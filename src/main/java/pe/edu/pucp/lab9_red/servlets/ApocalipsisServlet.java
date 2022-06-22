@@ -60,8 +60,6 @@ public class ApocalipsisServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
                 break;
             case "Objetos":
-
-
                 requestDispatcher=request.getRequestDispatcher("menuObjetos.jsp");
                 requestDispatcher.forward(request,response);
 
@@ -87,6 +85,7 @@ public class ApocalipsisServlet extends HttpServlet {
         String action =request.getParameter("action")==null? "redireccionar" : request.getParameter("action");
         Mision2Dao mision2Dao= new Mision2Dao();
         Mision3Dao mision3Dao= new Mision3Dao();
+        Mision4Dao mision4Dao= new Mision4Dao();
         String filtro;
         RequestDispatcher view;
         //Opcion actualizarSuper o añadirSuperviviente
@@ -99,6 +98,10 @@ public class ApocalipsisServlet extends HttpServlet {
         //Opcion añadirSuperviviente
         String apellido= request.getParameter("napellido");
         String sexo= request.getParameter("sexo");
+
+        //Opcion añadirZombie
+        String idtz= request.getParameter("idtipozombie");
+        String idvariante= request.getParameter("idvariante");
         switch (action){
             case "anadirsuperviviente":
                 try{
@@ -197,6 +200,16 @@ public class ApocalipsisServlet extends HttpServlet {
                 request.setAttribute("listaSuper", mision2Dao.listarSuperviviente(filtro));
                 view = request.getRequestDispatcher("menuSupervivientes.jsp");
                 view.forward(request,response);
+                break;
+            case "anadeZombie":
+                try{
+                    int idTipoZ=Integer.parseInt(idtz);
+                    int idva= Integer.parseInt(idvariante);
+                    mision4Dao.anadirZombie(nombre,apellido,idTipoZ,idva,sexo);
+                }catch (NumberFormatException e){
+                    System.out.println("Error de conversion de dato POST | anadeZombie");
+                }
+                response.sendRedirect(request.getContextPath()+"/?action=Zombies");
                 break;
         }
 
