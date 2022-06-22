@@ -1,4 +1,6 @@
-<%@ page import="pe.edu.pucp.lab9_red.beans.Zombie" %><%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Zombie" %>
+<%@ page import="pe.edu.pucp.lab9_red.beans.Variante" %>
+<%@ page import="pe.edu.pucp.lab9_red.beans.TiposDeZombie" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -12,6 +14,8 @@
 <jsp:useBean id="porcO" scope="request" type="java.lang.Double"/>
 <jsp:useBean id="proVict" scope="request" type="java.lang.Double"/>
 <jsp:useBean id="varianteComun" scope="request" type="java.lang.String"/>
+<jsp:useBean id="listaVariantes" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Variante>"/>
+<jsp:useBean id="tiposZombie" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.TiposDeZombie>"/>
 <html>
 <head>
 
@@ -96,9 +100,9 @@
             <td><%=z.getNombre()+" "+z.getApellido()%></td>
             <td><%=z.getSexo()%></td>
             <td><%=z.getHorasInfectado()%> horas</td>
-            <td><%=z.getNombreVariante()%></td>
+            <td><%=z.getVariante().getNombre()%></td>
             <td><%=z.getNumVictimas()%></td>
-            <td><%=z.getTipoZombie()%></td>
+            <td><%=z.getTz().getNombre()%></td>
         </tr>
         <%}%>
         </tbody>
@@ -117,13 +121,6 @@
 
 
 </div>
-
-
-
-
-
-
-
 
 
 <div class="modal fade" id="extraLargeModal" tabindex="-1" role="dialog" >
@@ -145,31 +142,30 @@
                                             <div class="form-group col-md-6"> <label for="napellido">Apellido</label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="apellido" required="required"> </div>
                                         </div>
                                         <div class="row px-2">
-                                            <div class="form-group col-md-6"> <label for="nidentificacion">N°identificacion</label><input type="number" class="form-control" id="nidentificacion" name="nidentificacion" min="1" placeholder="identificador" required="required"> </div>
-
-                                            <div class="form-group col-md-6"> <label for="nsexo">Sexo</label><input type="text" class="form-control" id="nsexo" name="nsexo"  placeholder="Sexo" required="required"> </div>
-                                        </div>
-                                        <div class="row px-2">
                                             <div class="form-group col-md-6">
                                                 <label for="tipozombie" class="form-control-label">Tipo de Zombie</label>
                                                 <select id="tipozombie" name="tipozombie" class="form-control">
-                                                    <option value="Demoledor">Demoledor</option>
-                                                    <option value="Rápido" >Rapido</option>
-                                                    <option value="Nino" >Niño</option>
-                                                    <option value="Normal" >Normal</option>
-                                                    <option value="Otro" >Otro</option>
+                                                    <%for(TiposDeZombie tz: tiposZombie){%>
+                                                    <option value="<%=tz.getIdTipo()%>"><%=tz.getNombre()%></option>
+                                                    <%}%>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="variante" class="form-control-label">Variante de Virus</label>
                                                 <select id="variante" name="variante" class="form-control">
-                                                    <option value="omicron">omicron</option>
+                                                    <%for(Variante v: listaVariantes){%>
+                                                    <option value="<%=v.getIdVariante()%>"><%=v.getNombre()%></option>
+                                                    <%}%>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="row px-2">
                                             <div class="form-group col-md-6">
-                                                <label for="virust" class="form-control-label">Tipo de Virus</label>
-                                                <select id="virust" name="virust" class="form-control">
-                                                    <option value="corona">corona</option>
+                                                <label for="nsexo">Sexo</label>
+                                                <select id="nsexo" name="sexo" class="form-control">
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Femenino">Femenino</option>
+                                                    <option value="Otro" >otro</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -187,8 +183,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 </body>

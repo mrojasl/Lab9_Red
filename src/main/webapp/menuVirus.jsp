@@ -1,4 +1,5 @@
-<%@ page import="pe.edu.pucp.lab9_red.beans.Virus" %><%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Virus" %>
+<%@ page import="pe.edu.pucp.lab9_red.beans.Variante" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -6,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listaVariantes" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Virus>"/>
+<jsp:useBean id="listaVariantes" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Variante>"/>
 <jsp:useBean id="cantidadVirus" scope="request" type="java.lang.Integer"/>
 <html>
 <head>
@@ -71,14 +72,14 @@
         </tr>
         </thead>
         <tbody>
-            <%for (Virus virus : listaVariantes){%>
+            <%for (Variante variante : listaVariantes){%>
             <tr>
-                <td><%=virus.getIdVirus()%></td>
-                <td><%=virus.getNombre()%></td>
-                <td><%=virus.getIdVariante()%></td>
-                <td><%=virus.getVariante()%></td>
-                <td><%=virus.getCasosEncontrados()%></td>
-                <td><a href="<%=request.getContextPath()%>/?action=ErradicarVariante&idVariante=<%=virus.getIdVariante()%>&idVirus=<%=virus.getIdVirus()%>"><button type="button" class="btn btn-outline-light">Erradicar Variante</button></a></td>
+                <td><%=variante.getVirus().getIdVirus()%></td>
+                <td><%=variante.getVirus().getNombre()%></td>
+                <td><%=variante.getIdVariante()%></td>
+                <td><%=variante.getNombre()%></td>
+                <td><%=variante.getCasosEncontrados()%></td>
+                <td><a href="<%=request.getContextPath()%>/?action=ErradicarVariante&idVariante=<%=variante.getIdVariante()%>&idVirus=<%=variante.getVirus().getIdVirus()%>"><button type="button" class="btn btn-outline-light">Erradicar Variante</button></a></td>
             </tr>
             <%}%>
 

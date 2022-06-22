@@ -1,5 +1,7 @@
 package pe.edu.pucp.lab9_red.daos;
 
+import pe.edu.pucp.lab9_red.beans.TiposDeZombie;
+import pe.edu.pucp.lab9_red.beans.Variante;
 import pe.edu.pucp.lab9_red.beans.Virus;
 import pe.edu.pucp.lab9_red.beans.Zombie;
 
@@ -27,9 +29,13 @@ public class Mision4Dao extends BaseDao{
                 zombie.setApellido(rs.getString(3));
                 zombie.setSexo(rs.getString(4));
                 zombie.setHorasInfectado(rs.getInt(5));
-                zombie.setNombreVariante(rs.getString(6));
+                Variante v= new Variante();
+                v.setNombre(rs.getString(6));
+                zombie.setVariante(v);
                 zombie.setNumVictimas(rs.getInt(7));
-                zombie.setTipoZombie(rs.getString(8));
+                TiposDeZombie tz= new TiposDeZombie();
+                tz.setNombre(rs.getString(8));
+                zombie.setTz(tz);
                 lista.add(zombie);
             }
         }catch (SQLException e) {
@@ -58,18 +64,17 @@ public class Mision4Dao extends BaseDao{
         double[] estadisticas={zHombres,zMujeres,zOtros,promVicZomb};
         return estadisticas;
     }
-
     public String varianteComun(){
         String sql="select v.nombre,count(*) from variante v " +
                 "inner join zombie z on z.idVariante=v.idVariante " +
                 "group by v.idVariante;";
-        ArrayList<Virus> listavariantes= new ArrayList<>();
+        ArrayList<Variante> listavariantes= new ArrayList<>();
         try(Connection conn= this.getConnection();
             Statement stmt= conn.createStatement();
             ResultSet rs= stmt.executeQuery(sql);){
             while(rs.next()){
-                Virus variante= new Virus();
-                variante.setVariante(rs.getString(1));
+                Variante variante= new Variante();
+                variante.setNombre(rs.getString(1));
                 variante.setCasosEncontrados(rs.getInt(2));
                 listavariantes.add(variante);
             }
@@ -78,12 +83,46 @@ public class Mision4Dao extends BaseDao{
         }
         int comparador=0;
         String almacena_Variante="";
-        for(Virus v : listavariantes){
+        for(Variante v : listavariantes){
             if(v.getCasosEncontrados()>comparador){
-                almacena_Variante=v.getVariante();
+                almacena_Variante=v.getNombre();
                 comparador=v.getCasosEncontrados();
             }
         }
         return almacena_Variante;
+    }
+    public ArrayList<Variante> listaVariantes(){
+        ArrayList<Variante> lista= new ArrayList<>();
+        String sql="select * from variante";
+        try(Connection conn= this.getConnection();
+            Statement stmt= conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)){
+            while(rs.next()){
+                Variante v= new Variante();
+                v.setIdVariante(rs.getInt(1));
+                v.setNombre(rs.getString(2));
+                lista.add(v);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+    public ArrayList<TiposDeZombie> listaTiposZombie(){
+        ArrayList<TiposDeZombie> lista= new ArrayList<>();
+        String sql="select * from tiposdezombie";
+        try(Connection conn= this.getConnection();
+            Statement stmt= conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)){
+            while(rs.next()){
+                TiposDeZombie tz= new TiposDeZombie();
+                tz.setIdTipo(rs.getInt(1));
+                tz.setNombre(rs.getString(2));
+                lista.add(tz);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
 }
