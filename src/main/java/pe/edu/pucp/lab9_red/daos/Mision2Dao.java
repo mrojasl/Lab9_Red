@@ -242,7 +242,6 @@ public class Mision2Dao extends BaseDao{
     }
 
 
-
     public void eliminarSuper(String id){
         eliminarInventario(id);
         if(obtenerIdPareja(id)!=null){

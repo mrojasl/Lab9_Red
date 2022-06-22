@@ -44,7 +44,7 @@ public class ApocalipsisServlet extends HttpServlet {
                 requestDispatcher=request.getRequestDispatcher("menuVirus.jsp");
                 requestDispatcher.forward(request,response);
                 break;
-            case  "ErradicarVariante":
+            case "ErradicarVariante":
                 int idVariante = Integer.parseInt(request.getParameter("idVariante"));
                 mision3Dao.EliminarZombiesDeVariante(idVariante);
                 int idVirus = Integer.parseInt(request.getParameter("idVirus"));
@@ -54,6 +54,11 @@ public class ApocalipsisServlet extends HttpServlet {
                     mision3Dao.EliminarVirus(idVirus);
                 }
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
+
+            case "menuZombies":
+                requestDispatcher=request.getRequestDispatcher("menuZombies.jsp");
+                requestDispatcher.forward(request,response);
+                break;
 
         }
 
