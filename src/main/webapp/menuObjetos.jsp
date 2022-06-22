@@ -79,16 +79,18 @@
                     if (objeto.getIdObjeto()==objetoNoUsado.getIdObjeto()){%>
 
                     <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
+                        <%if(!objeto.getVacuna()){%>
                         <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" step="any">
+                        <%}else{%>
+                        <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" max="0.5" min="0" step="any">
+                        <%}%>
                         <button type="submit" class="btn btn-info" >Actualizar</button>
                     </form>
-
-
                     <%centi++;%>
                     <%}} if (centi==objeto.getIdObjeto()){%>
 
                     <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
-                        <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" step="any">
+                        <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" max="0.5" step="any">
                         <button disabled type="button" class="btn btn-info" >Objeto usado</button>
                     </form>
                     <%}%>
@@ -199,7 +201,7 @@
                                     <div class="col-lg-5" STYLE="background-color: rgb(157,138,142)">
                                         <div class="row px-2" >
                                             <div class="form-group col-md-6"> <label for="nObjeto"><strong style="color: black">Nombre</strong></label><input type="text" class="form-control" id="nObjeto" name="nObjeto"  placeholder="nombre" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="nPesoObjeto"><strong style="color: black">Peso (en Kg)</strong></label><input type="number" class="form-control" id="nPesoObjeto" name="nPesoObjeto" min="0" step="any" placeholder="420"> </div>
+                                            <div class="form-group col-md-6"> <label for="nPesoObjeto"><strong style="color: black">Peso (en Kg)</strong></label><input type="number" class="form-control" id="nPesoObjeto" name="nPesoObjeto" min="0" step="any" placeholder="Peso (kg)"> </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
