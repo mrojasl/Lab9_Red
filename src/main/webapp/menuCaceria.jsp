@@ -90,7 +90,7 @@
             <tr>
 
                 <td>13422222222224</td>
-                <td>Zombi3</td>
+                <td>Zombie</td>
                 <td>322</td>
 
                 <td>
