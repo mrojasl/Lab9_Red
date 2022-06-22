@@ -80,6 +80,7 @@
       <th scope="col">Nombres de la Pareja</th>
       <th scope="col">Peso Cargado-KG-</th>
       <th scope="col">Edición | Eliminar</th>
+      <th scope="col">Ver Inventario</th>
     </tr>
     </thead>
     <tbody>
@@ -119,6 +120,14 @@
             <button type="submit" class="btn btn-danger" STYLE="margin-top: 10px">Eliminar</button>
           </form>
       </td>
+
+    <!-- Inventario1-->
+
+    <td>
+      <a href="<%=request.getContextPath()%>/menuInventario.jsp"><button type="button" class="btn btn-outline-info" >Ver Inventario</button></a>
+    </td>
+
+    <!-- Inventario-->
     </tr>
 
     <%}%>
