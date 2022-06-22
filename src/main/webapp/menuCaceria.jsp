@@ -97,7 +97,7 @@
                     <select name="atacarA" class="form-control">
 
 
-                    <option value="humano">asd</option>
+                    <option value="humano">asdx</option>
 
                         <option value="humano1">asd</option>
 
