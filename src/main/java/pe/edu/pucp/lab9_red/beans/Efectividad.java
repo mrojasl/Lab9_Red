@@ -1,16 +1,15 @@
 package pe.edu.pucp.lab9_red.beans;
 
 public class Efectividad {
-    private Zombie zombie;
+    private TiposDeZombie tipoDeZombie;
     private Objeto objeto;
     private Double porcentaje;
 
-    public Zombie getZombie() {
-        return zombie;
+    public TiposDeZombie getTipoDeZombie() {
+        return tipoDeZombie;
     }
-
-    public void setZombie(Zombie zombie) {
-        this.zombie = zombie;
+    public void setTipoDeZombie(TiposDeZombie tipoDeZombie) {
+        this.tipoDeZombie = tipoDeZombie;
     }
 
     public Objeto getObjeto() {
