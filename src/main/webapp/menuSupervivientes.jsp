@@ -106,7 +106,13 @@
           <option value="Soltero" <%=sp.getIdPareja()==null? "selected" : ""%>>Soltero</option>
           <%for(Superviviente pareja: parejas){%>
             <%if(!pareja.getIdHumano().equals(sp.getIdHumano())){%>
-              <option value="<%=pareja.getIdHumano()%>" <%=pareja.getIdHumano().equals(sp.getIdPareja())?"selected" : ""%>><%=pareja.getNombre()+" "+pareja.getApellido()%></option>
+              <%if(pareja.getIdPareja()==null){%>
+                <option value="<%=pareja.getIdHumano()%>"><%=pareja.getNombre()+" "+pareja.getApellido()%></option>
+              <%}else{%>
+                  <%if(pareja.getIdHumano().equals(sp.getIdPareja())){%>
+                    <option value="<%=pareja.getIdHumano()%>" selected><%=pareja.getNombre()+" "+pareja.getApellido()%></option>
+                  <%}%>
+              <%}%>
             <%}%>
           <%}%>
         </select>

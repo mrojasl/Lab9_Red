@@ -100,6 +100,8 @@ public class ApocalipsisServlet extends HttpServlet {
                 requestDispatcher= request.getRequestDispatcher("menuInventario.jsp");
                 requestDispatcher.forward(request,response);
                 break;
+            case "Caceria":
+                break;
         }
     }
     @Override

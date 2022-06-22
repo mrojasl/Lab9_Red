@@ -31,8 +31,7 @@ public class Mision2Dao extends BaseDao{
                 crearObjetoSuperInventario(idsuper, idObjeto);
             }
             aumentarCantidadObjetoInventario(idsuper,idObjeto,1);
-        }else{
-            System.out.println("ES MUY PESADO");
+            exitoso=true;
         }
         return exitoso;
     }
