@@ -20,7 +20,11 @@ public class Mision5Dao extends BaseDao{
                 o.setIdObjeto(rs.getInt(1));
                 o.setNombre(rs.getString(2));
                 o.setMasa(rs.getDouble(3));
-                o.setVacuna(rs.getInt(4));
+                if(rs.getInt(4)==0){
+                    o.setVacuna(false);
+                }else{
+                    o.setVacuna(true);
+                }
                 listaObjetos.add(o);
             }
         } catch (SQLException e) {

@@ -1,6 +1,7 @@
 package pe.edu.pucp.lab9_red.daos;
 
 import pe.edu.pucp.lab9_red.beans.Humano;
+import pe.edu.pucp.lab9_red.beans.Objeto;
 import pe.edu.pucp.lab9_red.beans.Superviviente;
 
 import java.sql.Connection;
@@ -10,6 +11,35 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Mision2Dao extends BaseDao{
+    public ArrayList<Objeto> listarInventario(String id){
+        ArrayList<Objeto> inventario= new ArrayList<>();
+        String sql="select i.cantidad, o.nombre, o.masa, o.vacuna from superviviente s " +
+                "inner join inventario i on s.idHumanos = i.idHumanos " +
+                "inner join objetos o on i.idObjetos = o.idObjetos " +
+                "where s.idHumanos=?";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql)){
+            pstmt.setString(1,id);
+            try(ResultSet rs= pstmt.executeQuery()){
+                while(rs.next()){
+                    Objeto objeto= new Objeto();
+                    objeto.setCantidad(rs.getInt(1));
+                    objeto.setNombre(rs.getString(2));
+                    objeto.setMasa(rs.getDouble(3));
+                    if(rs.getInt(4)==0){
+                        objeto.setVacuna(false);
+                    }else{
+                        objeto.setVacuna(true);
+                    }
+                    inventario.add(objeto);
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return inventario;
+    }
+
     public ArrayList<Superviviente> listarSuperviviente(String filtro){
         if(filtro.equals("Todo")){
             filtro="";

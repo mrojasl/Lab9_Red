@@ -120,11 +120,10 @@
             <button type="submit" class="btn btn-danger" STYLE="margin-top: 10px">Eliminar</button>
           </form>
       </td>
-
     <!-- Inventario1-->
 
     <td>
-      <a href="<%=request.getContextPath()%>/menuInventario.jsp"><button type="button" class="btn btn-outline-info" >Ver Inventario</button></a>
+      <a href="<%=request.getContextPath()%>/?action=verInventario&idSuper=<%=sp.getIdHumano()%>"><button type="button" class="btn btn-outline-info" >Ver Inventario</button></a>
     </td>
 
     <!-- Inventario-->

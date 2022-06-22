@@ -80,11 +80,11 @@
                 </td>
 
                 <td>
-                    <%if(objeto.getVacuna()==0){%>Objeto<%}else{%>Vacuna<%}%>
+                    <%if(objeto.getVacuna()){%>Objeto<%}else{%>Vacuna<%}%>
                 </td>
 
                 <td>
-                    <%if (objeto.getVacuna()==0){ }
+                    <%if (objeto.getVacuna()){ }
                     else{%>
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo<%=objeto.getIdObjeto()%>">Efectividad</button>
                     <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">

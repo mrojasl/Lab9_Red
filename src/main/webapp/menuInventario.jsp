@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Objeto" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="inventario" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Objeto>"/>
 <html>
 <head>
 
@@ -57,30 +58,19 @@
         </tr>
         </thead>
         <tbody>
-
+        <%for(Objeto o:inventario){%>
         <tr>
-
-
-            <td>Botella de agua</td>
-            <td>3</td>
-            <td>2.4</td>
-            <td>Nou</td>
+            <td><%=o.getNombre()%></td>
+            <td><%=o.getCantidad()%></td>
+            <td><%=o.getMasa()%></td>
+            <%if(o.getVacuna()){%>
+            <td>Vacuna</td>
+            <%}else{%>
+            <td>Normal</td>
+            <%}%>
             <td><button type="submit" class="btn btn-outline-danger" >Eliminar Objeto</button></td>
-
-
         </tr>
-        <tr>
-            <td>Aromas de chamán</td>
-            <td>2</td>
-            <td>0.442</td>
-            <td>Claro que yes</td>
-            <td><button type="submit" class="btn btn-outline-danger" >Eliminar Objeto</button></td>
-
-
-
-
-        </tr>
-
+        <%}%>
         </tbody>
     </table>
 

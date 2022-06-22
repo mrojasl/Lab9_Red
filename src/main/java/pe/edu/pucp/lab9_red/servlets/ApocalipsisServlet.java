@@ -78,6 +78,12 @@ public class ApocalipsisServlet extends HttpServlet {
                 requestDispatcher=request.getRequestDispatcher("menuZombies.jsp");
                 requestDispatcher.forward(request,response);
                 break;
+            case "verInventario":
+                String idSuper= request.getParameter("idSuper");
+                request.setAttribute("inventario", mision2Dao.listarInventario(idSuper));
+                requestDispatcher= request.getRequestDispatcher("menuInventario.jsp");
+                requestDispatcher.forward(request,response);
+                break;
         }
     }
     @Override
@@ -152,22 +158,6 @@ public class ApocalipsisServlet extends HttpServlet {
                 view.forward(request,response);
                 break;
 
-            /*case "AgregarVariante":
-                String nombreVirus = request.getParameter("nvirus").replaceAll(" ", "");
-                String nombreVariante = request.getParameter("nvariante").replaceAll(" ", "");
-                ArrayList<Virus> listaVirus = mision3Dao.listarVirus();
-                for (Virus virus : listaVirus){
-                    if (virus.getNombre().equalsIgnoreCase(nombreVirus)) {
-                        ArrayList<Virus> listaVariantesDeVirus = mision3Dao.obtenerVariantesDeVirus(virus.getIdVirus());
-                        for (Virus variante : listaVariantesDeVirus){
-                            if (variante.getVariante().equalsIgnoreCase(nombreVariante)){
-                                response.sendRedirect(request.getContextPath() + "/?action=Virus");
-                            }
-                        }
-
-                    }
-                }*/
-
             case "AgregarVariante":
                 String nombreVirus = request.getParameter("nvirus").replaceAll(" ", "");
                 String nombreVariante = request.getParameter("nvariante").replaceAll(" ", "");
@@ -211,6 +201,7 @@ public class ApocalipsisServlet extends HttpServlet {
                 }
                 response.sendRedirect(request.getContextPath()+"/?action=Zombies");
                 break;
+
         }
 
     }

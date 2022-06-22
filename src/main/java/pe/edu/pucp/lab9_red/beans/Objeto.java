@@ -4,7 +4,16 @@ public class Objeto {
     private int idObjeto;
     private String nombre;
     private Double masa;
-    private int vacuna;
+    private boolean vacuna;
+    private int cantidad; //atributo necesario para listar en el inventario
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
     public int getIdObjeto() {
         return idObjeto;
@@ -30,11 +39,11 @@ public class Objeto {
         this.masa = masa;
     }
 
-    public int getVacuna() {
+    public boolean getVacuna() {
         return vacuna;
     }
 
-    public void setVacuna(int vacuna) {
+    public void setVacuna(boolean vacuna) {
         this.vacuna = vacuna;
     }
 }
