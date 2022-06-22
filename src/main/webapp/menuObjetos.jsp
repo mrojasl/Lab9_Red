@@ -180,27 +180,27 @@
 
 
 
-<!--      AÑADIR OBJETO COMUN MODAL        -->
+<!--      AÑADIR OBJETO COMUN MODA1L        -->
 <!--      AÑADIR OBJETO COMUN MODAL        -->
 <!--      AÑADIR OBJETO COMUN MODAL        -->
 
 <div class="modal fade" id="extraLargeModal" tabindex="-1" role="dialog" >
     <div class="modal-dialog modal-xl">
         <div class="modal-content" STYLE="background-color: rgb(157,138,142)">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Añadir Objeto Común</h5>
+            <div class="modal-header" STYLE="background-color: rgb(157,138,142)">
+                <h5 class="modal-title" id="exampleModalLabel"><p STYLE="color: white;font-size: 30px"> <strong>Añadir Objeto Común</strong></p></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" action="<%=request.getContextPath()%>/?action=agregarObjetoComun">
-                <div class="modal-body" >
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="col-lg-5">
+                <div class="modal-body" STYLE="background-color: rgb(157,138,142)" >
+                    <div class="row justify-content-center" STYLE="background-color: rgb(157,138,142)">
+                        <div class="col-lg-12" STYLE="background-color: rgb(157,138,142)">
+                            <div class="card" STYLE="background-color: rgb(157,138,142)">
+                                <div class="row" STYLE="background-color: rgb(157,138,142)">
+                                    <div class="col-lg-5" STYLE="background-color: rgb(157,138,142)">
                                         <div class="row px-2" >
-                                            <div class="form-group col-md-6"> <label for="nObjeto">Nombre</label><input type="text" class="form-control" id="nObjeto" name="nObjeto"  placeholder="nombre" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="nPesoObjeto">Peso (en Kg)</label><input type="number" class="form-control" id="nPesoObjeto" name="nPesoObjeto" min="0" step="any" placeholder="420"> </div>
+                                            <div class="form-group col-md-6"> <label for="nObjeto"><strong style="color: black">Nombre</strong></label><input type="text" class="form-control" id="nObjeto" name="nObjeto"  placeholder="nombre" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="nPesoObjeto"><strong style="color: black">Peso (en Kg)</strong></label><input type="number" class="form-control" id="nPesoObjeto" name="nPesoObjeto" min="0" step="any" placeholder="420"> </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -231,38 +231,38 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content" STYLE="background-color: rgb(157,138,142)">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Añadir Vacuna</h5>
+                <h5 class="modal-title" id="exampleModalLabel1"><p STYLE="color: white;font-size: 30px"> <strong>Añadir Vacuna</strong></p></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" action="<%=request.getContextPath()%>/?action=agregarObjetoVacuna">
-                <div class="modal-body" >
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="row px-2" >
-                                            <div class="form-group col-md-6"> <label for="nVacuna">Nombre</label><input type="text" class="form-control" id="nVacuna" name="nVacuna"  placeholder="nombre" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="nPesoVacuna">Peso (en Kg)</label><input type="number" class="form-control" id="nPesoVacuna" name="nPesoVacuna" min="0.001" max="0.5" step="any" value="0.01"> </div>
+                <div class="modal-body" STYLE="background-color: rgb(157,138,142)">
+                    <div class="row justify-content-center" STYLE="background-color: rgb(157,138,142)">
+                        <div class="col-lg-12" STYLE="background-color: rgb(157,138,142)">
+                            <div class="card" STYLE="background-color: rgb(157,138,142)">
+                                <div class="row" STYLE="background-color: rgb(157,138,142)">
+                                    <div class="col-lg-5" STYLE="background-color: rgb(157,138,142)">
+                                        <div class="row px-2" STYLE="background-color: rgb(157,138,142)" >
+                                            <div class="form-group col-md-6"> <label for="nVacuna"><strong style="color: black">Nombre</strong></label><input type="text" class="form-control" id="nVacuna" name="nVacuna"  placeholder="nombre" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="nPesoVacuna"><strong style="color: black">Peso (en Kg)</strong></label><input type="number" class="form-control" id="nPesoVacuna" name="nPesoVacuna" min="0.001" max="0.5" step="any" value="0.01"> </div>
                                         </div>
 
                                         <div class="row px-2">
                                             <div class="form-group col-md-6">
-                                                <label for="vDemoledor1" class="form-control-label"><strong>Efectividad por tipo de Zombies:</strong><br>Demoledor:</label>
+                                                <label for="vDemoledor1" class="form-control-label"><strong style="font-size: 20px">Efectividad por tipo de Zombies:</strong><br><br><strong>Demoledor:</strong></label>
                                                 <input type="number" class="form-control" id="vDemoledor1" name="vDemoledor1" value="10" required="required" min="0" step="any">
 
-                                                <label for="vRapido1" class="form-control-label">Rapido:</label>
+                                                <label for="vRapido1" class="form-control-label"><strong style="color: black">Rapido:</strong></label>
                                                 <input type="number" class="form-control" id="vRapido1" name="vRapido1" value="10" required="required" min="0" max="100" step="any">
 
-                                                <label for="vNiño1" class="form-control-label">Niño:</label>
+                                                <label for="vNiño1" class="form-control-label"><strong style="color: black">Niño:</strong></label>
                                                 <input type="number" class="form-control" id="vNiño1" name="vNino1" value="10" required="required" min="0" max="100" step="any">
 
-                                                <label for="vNormal1" class="form-control-label">Normal:</label>
+                                                <label for="vNormal1" class="form-control-label"><strong style="color: black">Normal:</strong></label>
                                                 <input type="number" class="form-control" id="vNormal1" name="vNormal1" value="10" required="required" min="0" max="100" step="any">
 
-                                                <label for="vOtro1" class="form-control-label">Otro:</label>
+                                                <label for="vOtro1" class="form-control-label"><strong style="color: black">Otro:</strong></label>
                                                 <input type="number" class="form-control" id="vOtro1" name="vOtro1" value="10" required="required" min="0" max="100" step="any">
-                                                (Valores desde 0 hasta el 100% )
+                                                <strong>(Valores desde 0 hasta el 100% )</strong>
 
                                             </div>
                                         </div>

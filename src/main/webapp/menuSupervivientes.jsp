@@ -160,37 +160,37 @@
 
 <div class="modal fade" id="extraLargeModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+    <div class="modal-content" STYLE="background-color: rgb(157,138,142)">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Añadir Superviviente</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><p STYLE="color: white;font-size: 30px"> <strong>Añadir Superviviente</strong></p></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form method="POST" action="<%=request.getContextPath()%>/?action=anadirsuperviviente">
-        <div class="modal-body">
-          <div class="row justify-content-center">
-            <div class="col-lg-12">
-              <div class="card">
-                <div class="row">
-                  <div class="col-lg-5">
-                    <div class="row px-2">
+        <div class="modal-body" STYLE="background-color: rgb(157,138,142)">
+          <div class="row justify-content-center" STYLE="background-color: rgb(157,138,142)">
+            <div class="col-lg-12" STYLE="background-color: rgb(157,138,142)">
+              <div class="card" STYLE="background-color: rgb(157,138,142)">
+                <div class="row" STYLE="background-color: rgb(157,138,142)">
+                  <div class="col-lg-5" STYLE="background-color: rgb(157,138,142)">
+                    <div class="row px-2" STYLE="background-color: rgb(157,138,142)">
                       <input type="hidden" name="filtroSuper" value="<%=filtroSuper%>">
-                      <div class="form-group col-md-6"><label class="form-control-label">Apellidos</label> <input type="text"  id="napellido" name="napellido" required="required" placeholder="Apellidos">  </div>
-                      <div class="form-group col-md-6"> <label for="nnombre" class="form-control-label">Nombre(s)</label> <input type="text"  id="nnombre" name="nombre" required="required" placeholder="Nombre" > </div>
+                      <div class="form-group col-md-6"><label for="napellido"><strong style="color: black">Apellido(s)</strong></label> <input type="text" class="form-control" id="napellido" name="napellido" required="required" placeholder="Apellidos">  </div>
+                      <div class="form-group col-md-6"> <label for="nnombre"><strong style="color: black">Nombre(s)</strong></label> <input type="text" class="form-control"  id="nnombre" name="nombre" required="required" placeholder="Nombre" > </div>
                     </div>
                     <div class="row px-2">
-                      <div class="form-group col-md-6"> <label class="form-control-label">Peso(en KG)</label> <input type="number"  id="npeso" name="peso" required="required" min="1" step="any" placeholder="peso"> </div>
-                      <div class="form-group col-md-6"> <label for="nfuerza">Fuerza(en N)</label><input type="number" class="form-control" id="fuerza" required="required" name="fuerza" min="1" step="any" placeholder="Fuerza"></div>
+                      <div class="form-group col-md-6"> <label for="npeso"><strong style="color: black">Peso(en KG)</strong></label> <input type="number"  class="form-control" id="npeso" name="peso" required="required" min="1" step="any" placeholder="Peso"> </div>
+                      <div class="form-group col-md-6"> <label for="fuerza"><strong style="color: black">Fuerza(en N)</strong></label><input type="number" class="form-control" id="fuerza" required="required" name="fuerza" min="1" step="any" placeholder="Fuerza"></div>
                     </div>
                     <div class="row px-2">
-                      <div class="form-group col-md-6"> <label for="nsexo">Sexo</label>
+                      <div class="form-group col-md-6"> <label for="nsexo"><strong style="color: black">Sexo</strong></label>
                         <select id="nsexo" name="sexo" class="form-control">
                           <option value="Masculino">Masculino</option>
                           <option value="Femenino">Femenino</option>
                           <option value="Otro" >otro</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-6"> <label for="npareja">Pareja(Opcional)</label>
-                        <select name="idpareja" class="form-control">
+                      <div class="form-group col-md-6"> <label for="idpareja"><strong style="color: black">Pareja(Opcional)</strong></label>
+                        <select name="idpareja" class="form-control" id="idpareja">
                           <option value="Soltero">Soltero</option>
                           <%for(Superviviente pareja: parejas){%>
                             <%if(pareja.getIdPareja()==null){%>
