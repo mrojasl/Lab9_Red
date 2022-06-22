@@ -10,7 +10,7 @@
 <jsp:useBean id="listaEfectividad" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Efectividad>"/>
 <html>
 <head>
-
+    <link rel="icon" href="icon.png">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -86,19 +86,19 @@
                 <td>
                     <%if (objeto.getVacuna()==0){ }
                     else{%>
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo">Efectividad</button>
-                    <div id="demo" class="collapse">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo<%=objeto.getIdObjeto()%>">Efectividad</button>
+                    <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">
 
                         <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad">
-                            <label for="vDemoledor" class="form-control-label"></label>
-                            <input type="number" class="form-control" id="vDemoledor" name="vDemoledor" value="<%=10%>" required="required" min="0" step="any">
-                            <br>
+                            <label for="vDemoledor" class="form-control-label"></label>Demoledor
+                            <input type="number" class="form-control" id="vDemoledor" name="vDemoledor" value="<%%>" required="required" min="0" step="any">
+                            <br>Rápido
                             <input type="number" class="form-control" name="vRapido" value="<%=10%>" required="required" min="0" max="100" step="any">
-                            <br>
+                            <br>Niño:
                             <input type="number" class="form-control" name="vNiño" value="<%=10%>" required="required" min="0" max="100" step="any">
-                            <br>
+                            <br>Normal
                             <input type="number" class="form-control" name="vNormal" value="<%=10%>" required="required" min="0" max="100" step="any">
-                            <br>
+                            <br>Otro:
                             <input type="number" class="form-control" name="vOtro" value="<%=10%>" required="required" min="0" max="100" step="any">
                             (Valores desde 0 hasta el 100% )
                             <br>
