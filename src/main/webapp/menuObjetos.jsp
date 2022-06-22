@@ -107,7 +107,7 @@
                     <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">
 
 
-                        <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad">
+                        <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad&idObjeto=<%=objeto.getIdObjeto()%>">
 
                             <br>Demoledor
                             <input type="number" class="form-control" id="vDemoledor" name="vDemoledor"
@@ -127,7 +127,7 @@
 
                                    required="required" min="0" max="100" step="any">
                             <br>Niño:
-                            <input type="number" class="form-control" name="vNiño"
+                            <input type="number" class="form-control" name="vNino"
                                 <%for (Efectividad efectividad : listaEfectividad){%>
 
                                 <%if (efectividad.getObjeto().getIdObjeto()==objeto.getIdObjeto() && efectividad.getTipoDeZombie().getNombre().equalsIgnoreCase("Niño")){%>

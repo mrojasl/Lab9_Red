@@ -2,10 +2,7 @@ package pe.edu.pucp.lab9_red.daos;
 
 import pe.edu.pucp.lab9_red.beans.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Mision5Dao extends BaseDao{
@@ -89,5 +86,40 @@ public class Mision5Dao extends BaseDao{
                 System.out.println("Error Mision 3");
             }
             return listaObjetos;
+    }
+    public void actualizarPorcentaje(double porcentaje, int idObjeto,int idTipoZombie){
+        String sql= "update efectividad set\n" +
+                "porcentaje = ? where idTiposDeZombie = ? and idObjetos = ?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setDouble(1,porcentaje);
+            pstmt.setInt(2,idTipoZombie);
+            pstmt.setInt(3,idObjeto);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int obtenerIdTipoZombieDeNombre(String nombre){
+        int idTipoZombie=1;
+        String sql="select idTiposDeZombie from TiposDeZombie where nombre = ?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+            pstmt.setString(1,nombre);
+
+            try(ResultSet rs= pstmt.executeQuery()){
+                if(rs.next()){
+                    idTipoZombie = rs.getInt(1);
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idTipoZombie;
+
     }
 }

@@ -108,6 +108,7 @@ public class ApocalipsisServlet extends HttpServlet {
         Mision2Dao mision2Dao= new Mision2Dao();
         Mision3Dao mision3Dao= new Mision3Dao();
         Mision4Dao mision4Dao= new Mision4Dao();
+        Mision5Dao mision5Dao= new Mision5Dao();
         String filtro;
         RequestDispatcher view;
         //Opcion actualizarSuper o añadirSuperviviente
@@ -240,6 +241,22 @@ public class ApocalipsisServlet extends HttpServlet {
                     System.out.println("Error POST | eliminarObjetoInventario convertir dato");
                 }
                 response.sendRedirect(request.getContextPath()+"/?action=verInventario&idSuper="+idSuper);
+                break;
+            case "actualizarEfectividad":
+                double vDemoledor = Double.parseDouble(request.getParameter("vDemoledor"));
+                double vRapido = Double.parseDouble(request.getParameter("vRapido"));
+                double vNino = Double.parseDouble(request.getParameter("vNino"));
+                double vNormal = Double.parseDouble(request.getParameter("vNormal"));
+                double vOtro = Double.parseDouble(request.getParameter("vOtro"));
+                int idObjeto2 = Integer.parseInt(request.getParameter("idObjeto"));
+                mision5Dao.actualizarPorcentaje(vDemoledor,idObjeto2,1);
+                mision5Dao.actualizarPorcentaje(vRapido,idObjeto2,2);
+                mision5Dao.actualizarPorcentaje(vNino,idObjeto2,3);
+                mision5Dao.actualizarPorcentaje(vNormal,idObjeto2,4);
+                mision5Dao.actualizarPorcentaje(vOtro,idObjeto2,5);
+                response.sendRedirect(request.getContextPath()+"/?action=Objetos");
+
+
                 break;
         }
 
