@@ -24,6 +24,8 @@ public class ApocalipsisServlet extends HttpServlet {
         String action= request.getParameter("action")==null ? "listar": request.getParameter("action");
         Mision1Dao mision1Dao= new Mision1Dao();
         Mision2Dao mision2Dao= new Mision2Dao();
+        String mostrarStr= request.getParameter("mostrar");
+        String exitosoStr= request.getParameter("exitoso");
         Mision3Dao mision3Dao= new Mision3Dao();
         Mision4Dao mision4Dao= new Mision4Dao();
         Mision5Dao mision5Dao= new Mision5Dao();
@@ -83,6 +85,15 @@ public class ApocalipsisServlet extends HttpServlet {
             case "verInventario":
                 String idSuper= request.getParameter("idSuper");
                 Superviviente sp= mision2Dao.obtenerSuperporID(idSuper);
+                try{
+                    boolean mostrar=Boolean.parseBoolean(mostrarStr);
+                    boolean exitoso= Boolean.parseBoolean(exitosoStr);
+                    request.setAttribute("mostrar", mostrar);
+                    request.setAttribute("exitoso",exitoso);
+                }catch (NumberFormatException e){
+                    request.setAttribute("mostrar", false);
+                    request.setAttribute("exitoso",false);
+                }
                 request.setAttribute("superviviente", sp);
                 request.setAttribute("inventario", mision2Dao.listarInventario(idSuper));
                 request.setAttribute("objetosDisponibles", mision2Dao.listarObjetosDisponibles());
@@ -211,14 +222,15 @@ public class ApocalipsisServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/?action=Zombies");
                 break;
             case "anadeObjetoInventario":
+                boolean exitoso=false;
                 try{
                     int idO= Integer.parseInt(idObjeto);
                     double peso= Double.parseDouble(pesoObjeto);
-                    mision2Dao.anadirObjetoSuperviviente(idSuper,idO,peso);
+                    exitoso=mision2Dao.anadirObjetoSuperviviente(idSuper,idO,peso);
                 }catch (NumberFormatException e){
                     System.out.println("Error POST | anadeObjetoInventario convertir dato");
                 }
-                response.sendRedirect(request.getContextPath()+"/?action=verInventario&idSuper="+idSuper);
+                response.sendRedirect(request.getContextPath()+"/?action=verInventario&idSuper="+idSuper+"&exitoso="+exitoso+"&mostrar=true");
                 break;
             case "eliminarObjetoInventario":
                 try{
