@@ -5,6 +5,24 @@ public class Zombie extends Humano{
     private int numVictimas;
     private Virus virus;
     private String tipoZombie;
+    private int horasInfectado;
+    private String nombreVariante;
+
+    public int getHorasInfectado() {
+        return horasInfectado;
+    }
+
+    public void setHorasInfectado(int horasInfectado) {
+        this.horasInfectado = horasInfectado;
+    }
+
+    public String getNombreVariante() {
+        return nombreVariante;
+    }
+
+    public void setNombreVariante(String nombreVariante) {
+        this.nombreVariante = nombreVariante;
+    }
 
     public Virus getVirus() {
         return virus;
