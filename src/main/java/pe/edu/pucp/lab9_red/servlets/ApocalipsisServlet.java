@@ -1,5 +1,6 @@
 package pe.edu.pucp.lab9_red.servlets;
 
+import pe.edu.pucp.lab9_red.beans.Variante;
 import pe.edu.pucp.lab9_red.beans.Virus;
 import pe.edu.pucp.lab9_red.beans.Zombie;
 import pe.edu.pucp.lab9_red.daos.Mision1Dao;
@@ -52,15 +53,13 @@ public class ApocalipsisServlet extends HttpServlet {
                 mision3Dao.EliminarZombiesDeVariante(idVariante);
                 int idVirus = Integer.parseInt(request.getParameter("idVirus"));
                 mision3Dao.EliminarVariante(idVariante);
-                ArrayList<Virus> listaVariantes =  mision3Dao.obtenerVariantesDeVirus(idVirus);
+                ArrayList<Variante> listaVariantes =  mision3Dao.obtenerVariantesDeVirus(idVirus);
                 if (listaVariantes.size()==0){
                     mision3Dao.EliminarVirus(idVirus);
                 }
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
                 break;
             case "Objetos":
-
-
                 requestDispatcher=request.getRequestDispatcher("menuObjetos.jsp");
                 requestDispatcher.forward(request,response);
 
@@ -74,21 +73,19 @@ public class ApocalipsisServlet extends HttpServlet {
                 request.setAttribute("porcO", estadisticas[2]);
                 request.setAttribute("proVict", estadisticas[3]);
                 request.setAttribute("varianteComun", mision4Dao.varianteComun());
+                request.setAttribute("listaVariantes", mision4Dao.listaVariantes());
+                request.setAttribute("tiposZombie", mision4Dao.listaTiposZombie());
                 requestDispatcher=request.getRequestDispatcher("menuZombies.jsp");
                 requestDispatcher.forward(request,response);
                 break;
-
-
-
-
         }
-
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action =request.getParameter("action")==null? "redireccionar" : request.getParameter("action");
         Mision2Dao mision2Dao= new Mision2Dao();
         Mision3Dao mision3Dao= new Mision3Dao();
+        Mision4Dao mision4Dao= new Mision4Dao();
         String filtro;
         RequestDispatcher view;
         //Opcion actualizarSuper o añadirSuperviviente
@@ -101,6 +98,10 @@ public class ApocalipsisServlet extends HttpServlet {
         //Opcion añadirSuperviviente
         String apellido= request.getParameter("napellido");
         String sexo= request.getParameter("sexo");
+
+        //Opcion añadirZombie
+        String idtz= request.getParameter("idtipozombie");
+        String idvariante= request.getParameter("idvariante");
         switch (action){
             case "anadirsuperviviente":
                 try{
@@ -173,10 +174,10 @@ public class ApocalipsisServlet extends HttpServlet {
                 ArrayList<Virus> listaVirus = mision3Dao.listarVirus();
                 try{
                     int idSacado = mision3Dao.obtenerIdVirusDeNombre(nombreVirus);
-                    ArrayList<Virus> variantesDeIdSacado = mision3Dao.obtenerVariantesDeVirus(idSacado);
+                    ArrayList<Variante> variantesDeIdSacado = mision3Dao.obtenerVariantesDeVirus(idSacado);
                     int centinela = 0;
-                    for (Virus variante : variantesDeIdSacado){
-                        if (variante.getVariante().equalsIgnoreCase(nombreVariante)) {
+                    for (Variante variante : variantesDeIdSacado){
+                        if (variante.getNombre().equalsIgnoreCase(nombreVariante)) {
                             centinela++;
                         }
                     }
@@ -199,6 +200,16 @@ public class ApocalipsisServlet extends HttpServlet {
                 request.setAttribute("listaSuper", mision2Dao.listarSuperviviente(filtro));
                 view = request.getRequestDispatcher("menuSupervivientes.jsp");
                 view.forward(request,response);
+                break;
+            case "anadeZombie":
+                try{
+                    int idTipoZ=Integer.parseInt(idtz);
+                    int idva= Integer.parseInt(idvariante);
+                    mision4Dao.anadirZombie(nombre,apellido,idTipoZ,idva,sexo);
+                }catch (NumberFormatException e){
+                    System.out.println("Error de conversion de dato POST | anadeZombie");
+                }
+                response.sendRedirect(request.getContextPath()+"/?action=Zombies");
                 break;
         }
 

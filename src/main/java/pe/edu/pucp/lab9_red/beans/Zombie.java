@@ -3,10 +3,25 @@ package pe.edu.pucp.lab9_red.beans;
 public class Zombie extends Humano{
     private String fechaInfectado;
     private int numVictimas;
-    private Virus virus;
-    private String tipoZombie;
+    private Variante variante;
     private int horasInfectado;
-    private String nombreVariante;
+    private TiposDeZombie tz;
+
+    public Variante getVariante() {
+        return variante;
+    }
+
+    public void setVariante(Variante variante) {
+        this.variante = variante;
+    }
+
+    public TiposDeZombie getTz() {
+        return tz;
+    }
+
+    public void setTz(TiposDeZombie tz) {
+        this.tz = tz;
+    }
 
     public int getHorasInfectado() {
         return horasInfectado;
@@ -14,30 +29,6 @@ public class Zombie extends Humano{
 
     public void setHorasInfectado(int horasInfectado) {
         this.horasInfectado = horasInfectado;
-    }
-
-    public String getNombreVariante() {
-        return nombreVariante;
-    }
-
-    public void setNombreVariante(String nombreVariante) {
-        this.nombreVariante = nombreVariante;
-    }
-
-    public Virus getVirus() {
-        return virus;
-    }
-
-    public void setVirus(Virus virus) {
-        this.virus = virus;
-    }
-
-    public String getTipoZombie() {
-        return tipoZombie;
-    }
-
-    public void setTipoZombie(String tipoZombie) {
-        this.tipoZombie = tipoZombie;
     }
 
     public String getFechaInfectado() {
