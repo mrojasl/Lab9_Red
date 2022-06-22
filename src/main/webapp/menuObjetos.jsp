@@ -1,4 +1,5 @@
-<%@ page import="pe.edu.pucp.lab9_red.beans.Objeto" %><%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Objeto" %>
+<%@ page import="pe.edu.pucp.lab9_red.beans.Efectividad" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -105,21 +106,59 @@
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo<%=objeto.getIdObjeto()%>">Efectividad</button>
                     <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">
 
+
                         <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad">
-                            <label for="vDemoledor" class="form-control-label"></label>Demoledor
-                            <input type="number" class="form-control" id="vDemoledor" name="vDemoledor" value="<%%>" required="required" min="0" step="any">
+
+                            <br>Demoledor
+                            <input type="number" class="form-control" id="vDemoledor" name="vDemoledor"
+                                <%for (Efectividad efectividad : listaEfectividad){%>
+
+                            <%if (efectividad.getObjeto().getIdObjeto()==objeto.getIdObjeto() && efectividad.getTipoDeZombie().getNombre().equalsIgnoreCase("Demoledor")){%>
+                                   value="<%=efectividad.getPorcentaje()%>"
+                                   <%}}%>
+                                   required="required" min="0" step="any">
                             <br>Rápido
-                            <input type="number" class="form-control" name="vRapido" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <input type="number" class="form-control" name="vRapido"
+                                <%for (Efectividad efectividad : listaEfectividad){%>
+
+                                <%if (efectividad.getObjeto().getIdObjeto()==objeto.getIdObjeto() && efectividad.getTipoDeZombie().getNombre().equalsIgnoreCase("Rápido")){%>
+                                   value="<%=efectividad.getPorcentaje()%>"
+                                <%}}%>
+
+                                   required="required" min="0" max="100" step="any">
                             <br>Niño:
-                            <input type="number" class="form-control" name="vNiño" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <input type="number" class="form-control" name="vNiño"
+                                <%for (Efectividad efectividad : listaEfectividad){%>
+
+                                <%if (efectividad.getObjeto().getIdObjeto()==objeto.getIdObjeto() && efectividad.getTipoDeZombie().getNombre().equalsIgnoreCase("Niño")){%>
+                                   value="<%=efectividad.getPorcentaje()%>"
+                                <%}}%>
+
+                                   required="required" min="0" max="100" step="any">
                             <br>Normal
-                            <input type="number" class="form-control" name="vNormal" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <input type="number" class="form-control" name="vNormal"
+                                <%for (Efectividad efectividad : listaEfectividad){%>
+
+                                <%if (efectividad.getObjeto().getIdObjeto()==objeto.getIdObjeto() && efectividad.getTipoDeZombie().getNombre().equalsIgnoreCase("Normal")){%>
+                                   value="<%=efectividad.getPorcentaje()%>"
+                                <%}}%>
+
+                                   required="required" min="0" max="100" step="any">
                             <br>Otro:
-                            <input type="number" class="form-control" name="vOtro" value="<%=10%>" required="required" min="0" max="100" step="any">
+                            <input type="number" class="form-control" name="vOtro"
+                                <%for (Efectividad efectividad : listaEfectividad){%>
+
+                                <%if (efectividad.getObjeto().getIdObjeto()==objeto.getIdObjeto() && efectividad.getTipoDeZombie().getNombre().equalsIgnoreCase("Otro")){%>
+                                   value="<%=efectividad.getPorcentaje()%>"
+                                <%}}%>
+
+                                   required="required" min="0" max="100" step="any">
                             (Valores desde 0 hasta el 100% )
-                            <br>
+
                             <button type="submit" class="btn btn-info" >Actualizar</button>
                         </form>
+
+
                     </div>
                     <%}%>
                 </td>
