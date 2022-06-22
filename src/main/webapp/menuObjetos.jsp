@@ -234,7 +234,7 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Añadir Vacuna</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="<%=request.getContextPath()%>/">
+            <form method="POST" action="<%=request.getContextPath()%>/?action=agregarObjetoVacuna">
                 <div class="modal-body" >
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
@@ -243,25 +243,25 @@
                                     <div class="col-lg-5">
                                         <div class="row px-2" >
                                             <div class="form-group col-md-6"> <label for="nVacuna">Nombre</label><input type="text" class="form-control" id="nVacuna" name="nVacuna"  placeholder="nombre" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="nPesoVacuna">Peso (en Kg)</label><input type="number" class="form-control" id="nPesoVacuna" name="nPesoVacuna" min="0" max="0.5" step="any" placeholder="0.001"> </div>
+                                            <div class="form-group col-md-6"> <label for="nPesoVacuna">Peso (en Kg)</label><input type="number" class="form-control" id="nPesoVacuna" name="nPesoVacuna" min="0.001" max="0.5" step="any" value="0.01"> </div>
                                         </div>
 
                                         <div class="row px-2">
                                             <div class="form-group col-md-6">
                                                 <label for="vDemoledor1" class="form-control-label"><strong>Efectividad por tipo de Zombies:</strong><br>Demoledor:</label>
-                                                <input type="number" class="form-control" id="vDemoledor1" name="vDemoledor1" value="<%=10%>" required="required" min="0" step="any">
+                                                <input type="number" class="form-control" id="vDemoledor1" name="vDemoledor1" value="10" required="required" min="0" step="any">
 
                                                 <label for="vRapido1" class="form-control-label">Rapido:</label>
-                                                <input type="number" class="form-control" id="vRapido1" name="vRapido1" value="<%=10%>" required="required" min="0" max="100" step="any">
+                                                <input type="number" class="form-control" id="vRapido1" name="vRapido1" value="10" required="required" min="0" max="100" step="any">
 
                                                 <label for="vNiño1" class="form-control-label">Niño:</label>
-                                                <input type="number" class="form-control" id="vNiño1" name="vNiño1" value="<%=10%>" required="required" min="0" max="100" step="any">
+                                                <input type="number" class="form-control" id="vNiño1" name="vNino1" value="10" required="required" min="0" max="100" step="any">
 
                                                 <label for="vNormal1" class="form-control-label">Normal:</label>
-                                                <input type="number" class="form-control" id="vNormal1" name="vNormal1" value="<%=10%>" required="required" min="0" max="100" step="any">
+                                                <input type="number" class="form-control" id="vNormal1" name="vNormal1" value="10" required="required" min="0" max="100" step="any">
 
                                                 <label for="vOtro1" class="form-control-label">Otro:</label>
-                                                <input type="number" class="form-control" id="vOtro1" name="vOtro1" value="<%=10%>" required="required" min="0" max="100" step="any">
+                                                <input type="number" class="form-control" id="vOtro1" name="vOtro1" value="10" required="required" min="0" max="100" step="any">
                                                 (Valores desde 0 hasta el 100% )
 
                                             </div>
