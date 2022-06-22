@@ -4,16 +4,101 @@ import pe.edu.pucp.lab9_red.beans.Humano;
 import pe.edu.pucp.lab9_red.beans.Objeto;
 import pe.edu.pucp.lab9_red.beans.Superviviente;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Mision2Dao extends BaseDao{
+    public void eliminarObjetoSuperviviente(String idSuper, int idObjeto){
+        String sql="delete from inventario where idHumanos=? and idObjetos=?";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql)){
+            pstmt.setString(1,idSuper);
+            pstmt.setInt(2,idObjeto);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            System.out.println("No se eliminó el objeto en el inventario eliminarObjetoSuperviviente");
+            e.printStackTrace();
+        }
+    }
+
+    public boolean anadirObjetoSuperviviente(String idsuper, int idObjeto, double pesoObjeto){
+        boolean exitoso=false;
+        double pesoCargado= hallar_PesoCargado(idsuper);
+        Superviviente  sp= obtenerSuperporID(idsuper);
+        double f_Pesototal= (pesoCargado+pesoObjeto)*9.8;
+        if(sp.getFuerza()>=f_Pesototal){
+            if(!existeObjetoInventSuper(idsuper, idObjeto)){
+                crearObjetoSuperInventario(idsuper, idObjeto);
+            }
+            aumentarCantidadObjetoInventario(idsuper,idObjeto,1);
+        }else{
+            System.out.println("ES MUY PESADO");
+        }
+        return exitoso;
+    }
+    public void crearObjetoSuperInventario(String idsuper, int idObjeto){
+        String sql="insert into inventario (idHumanos, idObjetos, cantidad) values(?,?,0);";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql)){
+            pstmt.setString(1,idsuper);
+            pstmt.setInt(2,idObjeto);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            System.out.println("No se creo el objeto en el inventario crearObjetoSuperInventario");
+            e.printStackTrace();
+        }
+    }
+    public void aumentarCantidadObjetoInventario(String idsuper,int idObjeto,int cantidadAumentar){
+        int cantObjeto=obtenerCantidadObjetoInventSuper(idsuper, idObjeto);
+        String sql="update inventario set cantidad=? where idHumanos=? and idObjetos=?;";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql)){
+            pstmt.setInt(1,cantObjeto+cantidadAumentar);
+            pstmt.setString(2,idsuper);
+            pstmt.setInt(3,idObjeto);
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public int obtenerCantidadObjetoInventSuper(String idsuper, int idObjeto){
+        int cantidad=0;
+        String sql="select * from inventario where idHumanos=? and idObjetos=?;";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql)){
+            pstmt.setString(1,idsuper);
+            pstmt.setInt(2,idObjeto);
+            try(ResultSet rs= pstmt.executeQuery()){
+                if(rs.next()){
+                    cantidad=rs.getInt(3);
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+    public boolean existeObjetoInventSuper(String idsuper, int idObjeto){
+        boolean existe= false;
+        String sql="select * from inventario where idHumanos=? and idObjetos=?;";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql)){
+            pstmt.setString(1,idsuper);
+            pstmt.setInt(2,idObjeto);
+            try(ResultSet rs= pstmt.executeQuery()){
+                if(rs.next()){
+                    existe=true;
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return existe;
+    }
+
     public ArrayList<Objeto> listarInventario(String id){
         ArrayList<Objeto> inventario= new ArrayList<>();
-        String sql="select i.cantidad, o.nombre, o.masa, o.vacuna from superviviente s " +
+        String sql="select i.cantidad, o.nombre, o.masa, o.vacuna,o.idObjetos from superviviente s " +
                 "inner join inventario i on s.idHumanos = i.idHumanos " +
                 "inner join objetos o on i.idObjetos = o.idObjetos " +
                 "where s.idHumanos=?";
@@ -31,6 +116,7 @@ public class Mision2Dao extends BaseDao{
                     }else{
                         objeto.setVacuna(true);
                     }
+                    objeto.setIdObjeto(rs.getInt(5));
                     inventario.add(objeto);
                 }
             }
@@ -38,6 +124,49 @@ public class Mision2Dao extends BaseDao{
             e.printStackTrace();
         }
         return inventario;
+    }
+    public ArrayList<Objeto> listarObjetosDisponibles(){
+        ArrayList<Objeto> objetos= new ArrayList<>();
+        String sql="select * from objetos";
+        try(Connection con= this.getConnection();
+            Statement stmt= con.createStatement();
+            ResultSet rs=stmt.executeQuery(sql)){
+            while(rs.next()){
+                Objeto o= new Objeto();
+                o.setIdObjeto(rs.getInt(1));
+                o.setNombre(rs.getString(2));
+                o.setMasa(rs.getDouble(3));
+                if(rs.getInt(4)==1){
+                    o.setVacuna(true);
+                }else{
+                    o.setVacuna(false);
+                }
+                objetos.add(o);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return objetos;
+    }
+    public Superviviente obtenerSuperporID(String id){
+        Superviviente sp=null;
+        String sql="select h.idHumanos,concat(h.nombre, ' ', h.apellido), s.fuerza from humanos h " +
+                "inner join superviviente s on h.idHumanos = s.idHumanos where h.idHumanos=?";
+        try(Connection con= this.getConnection();
+            PreparedStatement pstmt= con.prepareStatement(sql);){
+            pstmt.setString(1,id);
+            try(ResultSet rs=pstmt.executeQuery()){
+                if(rs.next()){
+                    sp=new Superviviente();
+                    sp.setIdHumano(rs.getString(1));
+                    sp.setNombre(rs.getString(2));
+                    sp.setFuerza(rs.getDouble(3));
+                }
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sp;
     }
 
     public ArrayList<Superviviente> listarSuperviviente(String filtro){
@@ -270,7 +399,6 @@ public class Mision2Dao extends BaseDao{
             e.printStackTrace();
         }
     }
-
 
     public void eliminarSuper(String id){
         eliminarInventario(id);

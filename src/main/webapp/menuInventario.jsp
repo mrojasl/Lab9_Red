@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="inventario" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Objeto>"/>
+<jsp:useBean id="objetosDisponibles" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Objeto>"/>
+<jsp:useBean id="superviviente" scope="request" type="pe.edu.pucp.lab9_red.beans.Superviviente"/>
 <html>
 <head>
 
@@ -22,7 +24,7 @@
     <jsp:include page="header_style.jsp"/>
 
 
-    <title>Inventario del superviviente</title>
+    <title>Inventario del superviviente: </title>
     <style>
         .titulo{
             color:white;
@@ -37,7 +39,7 @@
 <div class="container">
 
     <div class="d-flex flex-row bd-highlight mb-1">
-        <p class="titulo">Inventario del Superviviente</p>
+        <p class="titulo">Inventario del Superviviente, <%=superviviente.getNombre()%></p>
     </div>
 
     <div class="p-2">
@@ -58,8 +60,12 @@
         </tr>
         </thead>
         <tbody>
+
         <%for(Objeto o:inventario){%>
+        <form method="POST" action="<%=request.getContextPath()%>/?action=eliminarObjetoInventario">
         <tr>
+            <input type="hidden" value="<%=o.getIdObjeto()%>" name="idObjeto">
+            <input type="hidden" value="<%=superviviente.getIdHumano()%>" name="idSuper">
             <td><%=o.getNombre()%></td>
             <td><%=o.getCantidad()%></td>
             <td><%=o.getMasa()%></td>
@@ -70,6 +76,7 @@
             <%}%>
             <td><button type="submit" class="btn btn-outline-danger" >Eliminar Objeto</button></td>
         </tr>
+        </form>
         <%}%>
         </tbody>
     </table>
@@ -78,8 +85,6 @@
 
 
 </div>
-
-
 
 
 
@@ -98,48 +103,33 @@
             <div class="modal-body">
                 <table class="table table-dark table-hover">
 
-
-
                     <thead>
                     <tr>
                         <th scope="col">Nombre del objeto</th>
                         <th scope="col">Peso(KG)</th>
                         <th scope="col">¿Es vacuna?</th>
                         <th scope="col">Añadir objeto</th>
-
                     </tr>
                     </thead>
                     <tbody>
-
+                    <%for(Objeto o:objetosDisponibles){%>
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=anadeObjetoInventario">
                     <tr>
-
-
-                        <td>Botella de agua</td>
-                        <td>15.4</td>
-                        <td>Nou</td>
+                        <input type="hidden" name="idObjeto" value="<%=o.getIdObjeto()%>">
+                        <input type="hidden" name="idSuper" value="<%=superviviente.getIdHumano()%>">
+                        <input type="hidden" name="pesoObjeto" value="<%=o.getMasa()%>">
+                        <td><%=o.getNombre()%></td>
+                        <td><%=o.getMasa()%></td>
+                        <%if(o.getVacuna()){%>
+                        <td>Vacuna</td>
+                        <%}else{%>
+                        <td>Normal</td>
+                        <%}%>
                         <td><button type="submit" class="btn btn-info" >Añadir Objeto</button></td>
-
-
-
                     </tr>
-                    <tr>
-                        <td>Aromas de chamán</td>
-                        <td>0.005</td>
-                        <td>Claro que yes</td>
-                        <td><button type="submit" class="btn btn-info" >Añadir Objeto</button></td>
-
-
-
-                    </tr>
-
+                    </form>
+                    <%}%>
                     </tbody>
-
-
-
-
-
-
-
                 </table>
 
             </div>
