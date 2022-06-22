@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Agregado advertencias y alertas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision6Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision2Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision2Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/header_style.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header_style.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuInventario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuInventario.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuSupervivientes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuSupervivientes.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Mision6! primer avancé! Método completo de simulación de ataque de un zombie a humano. Falta realizar los casos cuando uno u otro gane la batalla." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655918038418</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Mision6! primer avancé! Método completo de simulación de ataque de un zombie a humano. Falta realizar los casos cuando uno u otro gane la batalla.">
+      <created>1655922054032</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655922054032</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +227,7 @@
     <MESSAGE value="Servlet mision1" />
     <MESSAGE value="Servlet mision1 completado" />
     <MESSAGE value="Agregado advertencias y alertas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregado advertencias y alertas" />
+    <MESSAGE value="Mision6! primer avancé! Método completo de simulación de ataque de un zombie a humano. Falta realizar los casos cuando uno u otro gane la batalla." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mision6! primer avancé! Método completo de simulación de ataque de un zombie a humano. Falta realizar los casos cuando uno u otro gane la batalla." />
   </component>
 </project>
