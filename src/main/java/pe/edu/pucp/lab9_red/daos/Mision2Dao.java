@@ -21,7 +21,7 @@ public class Mision2Dao extends BaseDao{
         }
     }
 
-    public boolean anadirObjetoSuperviviente(String idsuper, int idObjeto, double pesoObjeto){
+    public boolean anadirObjetoSuperviviente(String idsuper, int idObjeto, double pesoObjeto, int cantidadAumentar){
         boolean exitoso=false;
         double pesoCargado= hallar_PesoCargado(idsuper);
         Superviviente  sp= obtenerSuperporID(idsuper);
@@ -30,7 +30,7 @@ public class Mision2Dao extends BaseDao{
             if(!existeObjetoInventSuper(idsuper, idObjeto)){
                 crearObjetoSuperInventario(idsuper, idObjeto);
             }
-            aumentarCantidadObjetoInventario(idsuper,idObjeto,1);
+            aumentarCantidadObjetoInventario(idsuper,idObjeto,cantidadAumentar);
             exitoso=true;
         }
         return exitoso;

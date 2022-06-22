@@ -227,7 +227,7 @@ public class ApocalipsisServlet extends HttpServlet {
                 try{
                     int idO= Integer.parseInt(idObjeto);
                     double peso= Double.parseDouble(pesoObjeto);
-                    exitoso=mision2Dao.anadirObjetoSuperviviente(idSuper,idO,peso);
+                    exitoso=mision2Dao.anadirObjetoSuperviviente(idSuper,idO,peso,1);
                 }catch (NumberFormatException e){
                     System.out.println("Error POST | anadeObjetoInventario convertir dato");
                 }
