@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pe.edu.pucp.lab9_red.beans.Zombie" %><%--
   Created by IntelliJ IDEA.
   User: Angel
   Date: 0021, 21 de junio del 2022
@@ -6,6 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="zombies" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Zombie>"/>
+<jsp:useBean id="porcH" scope="request" type="java.lang.Double"/>
+<jsp:useBean id="porcM" scope="request" type="java.lang.Double"/>
+<jsp:useBean id="porcO" scope="request" type="java.lang.Double"/>
+<jsp:useBean id="proVict" scope="request" type="java.lang.Double"/>
+<jsp:useBean id="varianteComun" scope="request" type="java.lang.String"/>
 <html>
 <head>
 
@@ -60,13 +66,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>aa</td>
-                    <td>33</td>
-                    <td>33</td>
-                    <td>33</td>
-                    <td>2</td>
+                    <td style="text-align: center"><%=varianteComun%></td>
+                    <td style="text-align: center"><%=Math.round(porcH*100.0)/100.0%></td>
+                    <td style="text-align: center"><%=Math.round(porcM*100.0)/100.0%></td>
+                    <td style="text-align: center"><%=Math.round(porcO*100.0)/100.0%></td>
+                    <td style="text-align: center"><%=(int)(double)proVict%></td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
@@ -85,17 +90,17 @@
         </tr>
         </thead>
         <tbody>
+        <%for(Zombie z: zombies){%>
         <tr>
-            <td>49929129381</td>
-            <td>El pepe</td>
-            <td>Masculino</td>
-            <td>1000 horas</td>
-            <td>Omicrón</td>
-            <td>23</td>
-            <td>Demoledor</td>
-
+            <td><%=z.getIdHumano()%></td>
+            <td><%=z.getNombre()+" "+z.getApellido()%></td>
+            <td><%=z.getSexo()%></td>
+            <td><%=z.getHorasInfectado()%> horas</td>
+            <td><%=z.getNombreVariante()%></td>
+            <td><%=z.getNumVictimas()%></td>
+            <td><%=z.getTipoZombie()%></td>
         </tr>
-
+        <%}%>
         </tbody>
     </table>
 

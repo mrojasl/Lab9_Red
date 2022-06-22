@@ -1,9 +1,11 @@
 package pe.edu.pucp.lab9_red.servlets;
 
 import pe.edu.pucp.lab9_red.beans.Virus;
+import pe.edu.pucp.lab9_red.beans.Zombie;
 import pe.edu.pucp.lab9_red.daos.Mision1Dao;
 import pe.edu.pucp.lab9_red.daos.Mision2Dao;
 import pe.edu.pucp.lab9_red.daos.Mision3Dao;
+import pe.edu.pucp.lab9_red.daos.Mision4Dao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,6 +26,7 @@ public class ApocalipsisServlet extends HttpServlet {
         Mision1Dao mision1Dao= new Mision1Dao();
         Mision2Dao mision2Dao= new Mision2Dao();
         Mision3Dao mision3Dao= new Mision3Dao();
+        Mision4Dao mision4Dao= new Mision4Dao();
         RequestDispatcher requestDispatcher;
         switch (action){
             case "listar":
@@ -62,7 +65,15 @@ public class ApocalipsisServlet extends HttpServlet {
                 requestDispatcher.forward(request,response);
 
                 break;
-            case "menuZombies":
+            case "Zombies":
+                ArrayList<Zombie> zombies= mision4Dao.listarZombie();
+                double[] estadisticas= mision4Dao.estadisticasZombie(zombies);
+                request.setAttribute("zombies", zombies);
+                request.setAttribute("porcH", estadisticas[0]);
+                request.setAttribute("porcM", estadisticas[1]);
+                request.setAttribute("porcO", estadisticas[2]);
+                request.setAttribute("proVict", estadisticas[3]);
+                request.setAttribute("varianteComun", mision4Dao.varianteComun());
                 requestDispatcher=request.getRequestDispatcher("menuZombies.jsp");
                 requestDispatcher.forward(request,response);
                 break;
