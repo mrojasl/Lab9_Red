@@ -10,9 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Mision2 avance, falta editar, agregar nuevo. Pero funciona la vista">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Efectividad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/beans/Objeto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/header_style.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header_style.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuObjetos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuObjetos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

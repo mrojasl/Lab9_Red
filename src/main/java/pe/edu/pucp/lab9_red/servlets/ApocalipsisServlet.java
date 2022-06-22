@@ -54,11 +54,21 @@ public class ApocalipsisServlet extends HttpServlet {
                     mision3Dao.EliminarVirus(idVirus);
                 }
                 response.sendRedirect(request.getContextPath() + "/?action=Virus");
+                break;
+            case "Objetos":
 
+
+                requestDispatcher=request.getRequestDispatcher("menuObjetos.jsp");
+                requestDispatcher.forward(request,response);
+
+                break;
             case "menuZombies":
                 requestDispatcher=request.getRequestDispatcher("menuZombies.jsp");
                 requestDispatcher.forward(request,response);
                 break;
+
+
+
 
         }
 
