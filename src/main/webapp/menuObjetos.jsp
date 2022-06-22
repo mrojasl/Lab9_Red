@@ -106,7 +106,6 @@
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo<%=objeto.getIdObjeto()%>">Efectividad</button>
                     <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">
 
-
                         <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarEfectividad&idObjeto=<%=objeto.getIdObjeto()%>">
 
                             <br>Demoledor

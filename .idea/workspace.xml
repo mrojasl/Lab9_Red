@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Dao Mision6 Terminado Completamente!" />
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="mensajito de que no generan efectos los no vacunas">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision6Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision6Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuCaceria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuCaceria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuObjetos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuObjetos.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +57,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -173,6 +180,7 @@
       <workItem from="1655790445068" duration="663000" />
       <workItem from="1655822865508" duration="1825000" />
       <workItem from="1655825584479" duration="1468000" />
+      <workItem from="1655933533541" duration="6943000" />
     </task>
     <task id="LOCAL-00001" summary="Servlet mision1">
       <created>1655786601522</created>
@@ -202,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655930277845</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="mensajito de que no generan efectos los no vacunas">
+      <created>1655930981143</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655930981143</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,17 +238,7 @@
     <MESSAGE value="Servlet mision1" />
     <MESSAGE value="Servlet mision1 completado" />
     <MESSAGE value="Dao Mision6 Terminado Completamente!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dao Mision6 Terminado Completamente!" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java</url>
-          <line>279</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="mensajito de que no generan efectos los no vacunas" />
+    <option name="LAST_COMMIT_MESSAGE" value="mensajito de que no generan efectos los no vacunas" />
   </component>
 </project>

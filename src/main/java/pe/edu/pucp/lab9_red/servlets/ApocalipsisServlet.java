@@ -99,6 +99,19 @@ public class ApocalipsisServlet extends HttpServlet {
                 requestDispatcher.forward(request,response);
                 break;
             case "Caceria":
+                try{
+                    boolean mostrar=Boolean.parseBoolean(mostrarStr);
+                    boolean exitoso= Boolean.parseBoolean(exitosoStr);
+                    request.setAttribute("mostrar", mostrar);
+                    request.setAttribute("exitoso",exitoso);
+                }catch (NumberFormatException e){
+                    request.setAttribute("mostrar", false);
+                    request.setAttribute("exitoso",false);
+                }
+                request.setAttribute("listaSupervivientes",mision2Dao.listarSuperviviente(""));
+                request.setAttribute("listaZombies", mision4Dao.listarZombie());
+                requestDispatcher= request.getRequestDispatcher("menuCaceria.jsp");
+                requestDispatcher.forward(request,response);
                 break;
         }
     }
@@ -109,6 +122,8 @@ public class ApocalipsisServlet extends HttpServlet {
         Mision3Dao mision3Dao= new Mision3Dao();
         Mision4Dao mision4Dao= new Mision4Dao();
         Mision5Dao mision5Dao= new Mision5Dao();
+        Mision6Dao mision6Dao= new Mision6Dao();
+        boolean exitoso;
         String filtro;
         RequestDispatcher view;
         //Opcion actualizarSuper o añadirSuperviviente
@@ -116,7 +131,7 @@ public class ApocalipsisServlet extends HttpServlet {
         String peso0= request.getParameter("peso");//añaSupe
         String fuerza0= request.getParameter("fuerza");//añaSupe
         String idpareja= request.getParameter("idpareja");//añaSupe
-        String idSuper= request.getParameter("idSuper");
+        String idSuper= request.getParameter("idSuper");//AtacarHumano
 
         //Opcion añadirSuperviviente
         String apellido= request.getParameter("napellido");
@@ -129,6 +144,9 @@ public class ApocalipsisServlet extends HttpServlet {
         //Opcion añadirOjeto
         String idObjeto= request.getParameter("idObjeto");
         String pesoObjeto= request.getParameter("pesoObjeto");
+
+        //Opcion AtacarHumano
+        String idZombie= request.getParameter("idZombie");
         switch (action){
             case "anadirsuperviviente":
                 try{
@@ -223,7 +241,7 @@ public class ApocalipsisServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/?action=Zombies");
                 break;
             case "anadeObjetoInventario":
-                boolean exitoso=false;
+                exitoso=false;
                 try{
                     int idO= Integer.parseInt(idObjeto);
                     double peso= Double.parseDouble(pesoObjeto);
@@ -301,9 +319,17 @@ public class ApocalipsisServlet extends HttpServlet {
                 mision5Dao.insertarEfectividad(3,idObjeto3,vNino1);
                 mision5Dao.insertarEfectividad(4,idObjeto3,vNormal1);
                 mision5Dao.insertarEfectividad(5,idObjeto3,vOtro1);
-
                 response.sendRedirect(request.getContextPath()+"/?action=Objetos");
-
+                break;
+            case "Atacarhumano":
+                if(mision6Dao.ataque(idZombie,idSuper)){
+                    mision6Dao.superGana(idZombie,idSuper);
+                    exitoso=true;
+                }else{
+                    mision6Dao.zombieGana(idZombie, idSuper);
+                    exitoso=false;
+                }
+                response.sendRedirect(request.getContextPath()+"/?action=Caceria&mostrar=true&exitoso="+exitoso);
                 break;
         }
 

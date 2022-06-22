@@ -98,18 +98,17 @@ public class Mision6Dao extends BaseDao{
     }
     public void superGana(String idZ, String idS){
         Zombie zombie= (Zombie) obtenerHumanoporID(idZ);
-        convertirZombieASuper(zombie);
-
-        Superviviente sp= (Superviviente) obtenerHumanoporID(idS);
         int idTipoZombie= encontrarTipoZombie(idZ);
         Efectividad vacunaEfct=vacunaMasEfectiva(idS, idTipoZombie);
         Mision2Dao mision2Dao = new Mision2Dao();
+
         //Reutilizamos funcion
         mision2Dao.anadirObjetoSuperviviente(idS,vacunaEfct.getObjeto().getIdObjeto(),0, -1);
         int cant_Vacunas=mision2Dao.obtenerCantidadObjetoInventSuper(idS,vacunaEfct.getObjeto().getIdObjeto());
         if(cant_Vacunas==0){
             mision2Dao.eliminarObjetoSuperviviente(idS,vacunaEfct.getObjeto().getIdObjeto());
         }
+        convertirZombieASuper(zombie);
     }
 
     public void convertirZombieASuper(Zombie z){
@@ -138,11 +137,13 @@ public class Mision6Dao extends BaseDao{
     }
     public void zombieAumentaVictimas(Zombie z, int victimasNuevas){
         int cantVictimas= z.getNumVictimas();
-        String sql="update zombie set numeroVictimas= ? where zombie.idHumanos=?";
+        String sql="update zombie set numeroVictimas= ? where idHumanos=?";
         try(Connection conn= this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql);){
-            pstmt.setInt(1,cantVictimas+victimasNuevas);
+            int total=cantVictimas+victimasNuevas;
+            pstmt.setInt(1,total);
             pstmt.setString(2,z.getIdHumano());
+            pstmt.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
         }
