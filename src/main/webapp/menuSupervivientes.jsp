@@ -111,12 +111,12 @@
         </select>
       </td>
       <td><%=pesoCargado%></td>
-      <td><button type="submit" class="btn btn-primary">Actualizar</button>
+      <td><button type="submit" class="btn btn-primary" >Actualizar</button>
     </form>
           <form method="POST" action="<%=request.getContextPath()%>/?action=eliminar">
             <input type="hidden" name="idSuper" value="<%=sp.getIdHumano()%>">
             <input type="hidden" value="<%=filtroSuper%>" name="filtroSuper">
-            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-danger" STYLE="margin-top: 10px">Eliminar</button>
           </form>
       </td>
     </tr>
