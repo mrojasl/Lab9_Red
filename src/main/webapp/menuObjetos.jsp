@@ -63,7 +63,6 @@
             <th scope="col">Peso(KG)</th>
             <th scope="col">Tipo</th>
             <th scope="col">Mostrar efectividad de cura</th>
-
         </tr>
         </thead>
         <tbody>
@@ -101,8 +100,9 @@
                 </td>
 
                 <td>
-                    <%if (!objeto.getVacuna()){ }
-                    else{%>
+                    <%if(!objeto.getVacuna()){%>
+                        <p>No genera efecto</p>
+                    <%}else{%>
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo<%=objeto.getIdObjeto()%>">Efectividad</button>
                     <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">
 
