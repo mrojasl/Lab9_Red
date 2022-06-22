@@ -36,7 +36,7 @@
 <div class="container">
 
     <div class="d-flex flex-row bd-highlight mb-1">
-        <p class="titulo">Menú de cacería <img src="Popup_solder_red%25402x.png" alt="Haunt" style="width: 55px;height: 55px"> </p>
+        <p class="titulo">Menú de cacería <img src="Popup_solder_red.png" alt="Haunt" style="width: 55px;height: 55px"> </p>
     </div>
 
 
