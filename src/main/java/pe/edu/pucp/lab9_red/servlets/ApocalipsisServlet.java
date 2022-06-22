@@ -257,8 +257,12 @@ public class ApocalipsisServlet extends HttpServlet {
                 mision5Dao.actualizarPorcentaje(vNormal,idObjeto2,4);
                 mision5Dao.actualizarPorcentaje(vOtro,idObjeto2,5);
                 response.sendRedirect(request.getContextPath()+"/?action=Objetos");
-
-
+                break;
+            case "agregarObjetoComun":
+                String nombreObjeto = request.getParameter("nObjeto");
+                double pesoObjeto2 = Double.parseDouble(request.getParameter("nPesoObjeto"));
+                mision5Dao.agregarObjetoNormal(nombreObjeto,pesoObjeto2);
+                response.sendRedirect(request.getContextPath()+"/?action=Objetos");
                 break;
         }
 
