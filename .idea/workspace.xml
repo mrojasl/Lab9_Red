@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Mision2, agramos el poder ver Inventario! Falta poder añadir o eliminar, pero ya se lista!">
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Mision2 avance, falta editar, agregar nuevo. Pero funciona la vista">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision2Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision2Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision5Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision5Dao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/servlets/ApocalipsisServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuInventario.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuInventario.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menuObjetos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menuObjetos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +54,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Resources/java/Lab9_Red/database&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Resources\java\Lab9_Red\database" />
@@ -178,7 +192,6 @@
       <workItem from="1655790445068" duration="663000" />
       <workItem from="1655822865508" duration="1825000" />
       <workItem from="1655825584479" duration="1468000" />
-      <workItem from="1655899131929" duration="8952000" />
     </task>
     <task id="LOCAL-00001" summary="Servlet mision1">
       <created>1655786601522</created>
@@ -201,14 +214,7 @@
       <option name="project" value="LOCAL" />
       <updated>1655787099115</updated>
     </task>
-    <task id="LOCAL-00004" summary="Mision2, agramos el poder ver Inventario! Falta poder añadir o eliminar, pero ya se lista!">
-      <created>1655902392857</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1655902392857</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +234,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Servlet mision1" />
     <MESSAGE value="Servlet mision1 completado" />
-    <MESSAGE value="Mision2, agramos el poder ver Inventario! Falta poder añadir o eliminar, pero ya se lista!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mision2, agramos el poder ver Inventario! Falta poder añadir o eliminar, pero ya se lista!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet mision1 completado" />
   </component>
 </project>

@@ -61,6 +61,7 @@ public class ApocalipsisServlet extends HttpServlet {
             case "Objetos":
                 request.setAttribute("listaObjetos",mision5Dao.listarObjetos());
                 request.setAttribute("listaEfectividad",mision5Dao.listarEfectividad());
+                request.setAttribute("listaObjetosNoUsados",mision5Dao.listarObjetosNoUsados());
                 requestDispatcher=request.getRequestDispatcher("menuObjetos.jsp");
                 requestDispatcher.forward(request,response);
 

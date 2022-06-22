@@ -64,4 +64,30 @@ public class Mision5Dao extends BaseDao{
         }
         return listaEfectividad;
     }
+    public ArrayList<Objeto> listarObjetosNoUsados(){
+            ArrayList<Objeto> listaObjetos = new ArrayList<>();
+            String sql="select o.idObjetos,o.nombre,o.masa,o.vacuna\n" +
+                    "from objetos o left join inventario i on o.idObjetos=i.idObjetos\n" +
+                    "where i.cantidad is null";
+            try(Connection conn= this.getConnection();
+                Statement stmt= conn.createStatement();
+                ResultSet rs= stmt.executeQuery(sql)){
+                while(rs.next()){
+                    Objeto o= new Objeto();
+                    o.setIdObjeto(rs.getInt(1));
+                    o.setNombre(rs.getString(2));
+                    o.setMasa(rs.getDouble(3));
+                    if(rs.getInt(4)==0){
+                        o.setVacuna(false);
+                    }else{
+                        o.setVacuna(true);
+                    }
+                    listaObjetos.add(o);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Error Mision 3");
+            }
+            return listaObjetos;
+    }
 }

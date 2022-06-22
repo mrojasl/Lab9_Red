@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaObjetos" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Objeto>"/>
 <jsp:useBean id="listaEfectividad" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Efectividad>"/>
+<jsp:useBean id="listaObjetosNoUsados" scope="request" type="java.util.ArrayList<pe.edu.pucp.lab9_red.beans.Objeto>"/>
 <html>
 <head>
     <link rel="icon" href="icon.png">
@@ -73,10 +74,25 @@
                 </td>
 
                 <td>
+                    <%int centi=objeto.getIdObjeto();%>
+                    <%for (Objeto objetoNoUsado : listaObjetosNoUsados) {
+                    if (objeto.getIdObjeto()==objetoNoUsado.getIdObjeto()){%>
+
                     <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
                         <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" step="any">
                         <button type="submit" class="btn btn-info" >Actualizar</button>
                     </form>
+
+
+                    <%centi++;%>
+                    <%}} if (centi==objeto.getIdObjeto()){%>
+
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
+                        <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" step="any">
+                        <button disabled type="button" class="btn btn-info" >Objeto usado</button>
+                    </form>
+                    <%}%>
+
                 </td>
 
                 <td>
@@ -84,7 +100,7 @@
                 </td>
 
                 <td>
-                    <%if (objeto.getVacuna()){ }
+                    <%if (!objeto.getVacuna()){ }
                     else{%>
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#demo<%=objeto.getIdObjeto()%>">Efectividad</button>
                     <div id="demo<%=objeto.getIdObjeto()%>" class="collapse">
