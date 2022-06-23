@@ -127,23 +127,23 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content" STYLE="background-color: rgb(157,138,142)">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Añadir Zombie</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><p STYLE="color: white;font-size: 30px"> <strong>Añadir Zombie</strong></p></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" action="<%=request.getContextPath()%>/?action=anadeZombie">
-                <div class="modal-body" >
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="col-lg-5">
+                <div class="modal-body" STYLE="background-color: rgb(157,138,142)">
+                    <div class="row justify-content-center" STYLE="background-color: rgb(157,138,142)">
+                        <div class="col-lg-12" STYLE="background-color: rgb(157,138,142)">
+                            <div class="card" STYLE="background-color: rgb(157,138,142)">
+                                <div class="row" STYLE="background-color: rgb(157,138,142)">
+                                    <div class="col-lg-5" STYLE="background-color: rgb(157,138,142)">
                                         <div class="row px-2" >
-                                            <div class="form-group col-md-6"> <label for="nnombre">Nombre</label><input type="text" class="form-control" id="nnombre" name="nombre"  placeholder="Nombre" required="required"> </div>
-                                            <div class="form-group col-md-6"> <label for="napellido">Apellido</label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="Apellido" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="nnombre"><strong style="color: black">Nombre</strong></label><input type="text" class="form-control" id="nnombre" name="nombre"  placeholder="Nombre" required="required"> </div>
+                                            <div class="form-group col-md-6"> <label for="napellido"><strong style="color: black">Apellido</strong></label><input type="text" class="form-control" id="napellido" name="napellido"  placeholder="Apellido" required="required"> </div>
                                         </div>
                                         <div class="row px-2">
                                             <div class="form-group col-md-6">
-                                                <label for="tipozombie" class="form-control-label">Tipo de Zombie</label>
+                                                <label for="tipozombie" class="form-control-label"><strong style="color: black">Tipo de Zombie</strong></label></label>
                                                 <select id="tipozombie" name="idtipozombie" class="form-control">
                                                     <%for(TiposDeZombie tz: tiposZombie){%>
                                                     <option value="<%=tz.getIdTipo()%>"><%=tz.getNombre()%></option>
@@ -151,7 +151,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="variante" class="form-control-label">Variante de Virus</label>
+                                                <label for="variante" class="form-control-label"><strong style="color: black">Variante de Virus</strong></label></label>
                                                 <select id="variante" name="idvariante" class="form-control">
                                                     <%for(Variante v: listaVariantes){%>
                                                     <option value="<%=v.getIdVariante()%>"><%=v.getNombre()%></option>
@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="row px-2">
                                             <div class="form-group col-md-6">
-                                                <label for="nsexo">Sexo</label>
+                                                <label for="nsexo"><strong style="color: black">Sexo</strong></label>
                                                 <select id="nsexo" name="sexo" class="form-control">
                                                     <option value="Masculino">Masculino</option>
                                                     <option value="Femenino">Femenino</option>
