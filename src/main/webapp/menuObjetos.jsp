@@ -78,7 +78,7 @@
                     <%for (Objeto objetoNoUsado : listaObjetosNoUsados) {
                     if (objeto.getIdObjeto()==objetoNoUsado.getIdObjeto()){%>
 
-                    <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso">
+                    <form method="POST" action="<%=request.getContextPath()%>/?action=actualizarPeso&idPeso=<%=objeto.getIdObjeto()%>">
                         <%if(!objeto.getVacuna()){%>
                         <input type="number" class="form-control" name="Peso" value="<%=objeto.getMasa()%>" required="required" min="0" step="any">
                         <%}else{%>

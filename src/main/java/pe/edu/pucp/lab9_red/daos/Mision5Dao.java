@@ -184,4 +184,18 @@ public class Mision5Dao extends BaseDao{
             e.printStackTrace();
         }
     }
+    public void actualizarPeso (double peso, int idObjeto){
+        String sql="update objetos set masa=? where idObjetos=?";
+        try(Connection conn= this.getConnection();
+            PreparedStatement pstmt= conn.prepareStatement(sql);){
+
+            pstmt.setDouble(1,peso);
+            pstmt.setInt(2,idObjeto);
+
+            pstmt.executeUpdate();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
