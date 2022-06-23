@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Mision2 avance, falta editar, agregar nuevo. Pero funciona la vista">
+    <list default="true" id="03264ea4-ca6f-44ea-9b80-dd4fd7f1e5ce" name="Changes" comment="Finura (TERMINADO 99.9999%)">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision2Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision2Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision6Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/pucp/lab9_red/daos/Mision6Dao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +54,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Resources\java\Lab9_Red\database" />
@@ -177,6 +179,9 @@
       <workItem from="1655790445068" duration="663000" />
       <workItem from="1655822865508" duration="1825000" />
       <workItem from="1655825584479" duration="1468000" />
+      <workItem from="1655933533541" duration="12846000" />
+      <workItem from="1655947754563" duration="510000" />
+      <workItem from="1655986028381" duration="2666000" />
     </task>
     <task id="LOCAL-00001" summary="Servlet mision1">
       <created>1655786601522</created>
@@ -206,7 +211,35 @@
       <option name="project" value="LOCAL" />
       <updated>1655930277845</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="mensajito de que no generan efectos los no vacunas">
+      <created>1655930981143</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655930981143</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Mision 6 Completado completamente completo completita!">
+      <created>1655940618944</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655940618945</updated>
+    </task>
+    <task id="LOCAL-00007" summary="a">
+      <created>1655942287376</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655942287376</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Finura (TERMINADO 99.9999%)">
+      <created>1655945208191</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655945208191</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +260,10 @@
     <MESSAGE value="Servlet mision1" />
     <MESSAGE value="Servlet mision1 completado" />
     <MESSAGE value="Dao Mision6 Terminado Completamente!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dao Mision6 Terminado Completamente!" />
+    <MESSAGE value="mensajito de que no generan efectos los no vacunas" />
+    <MESSAGE value="Mision 6 Completado completamente completo completita!" />
+    <MESSAGE value="a" />
+    <MESSAGE value="Finura (TERMINADO 99.9999%)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finura (TERMINADO 99.9999%)" />
   </component>
 </project>

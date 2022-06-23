@@ -240,7 +240,6 @@ public class Mision2Dao extends BaseDao{
             }
         }
         String sql="update humanos set nombre=?, apellido=? where idHumanos=?";
-        System.out.println(idPareja+" "+id);
         actualizarSuper(fuerza,peso,id,idPareja);
         try(Connection conn= this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql);){
@@ -420,7 +419,7 @@ public class Mision2Dao extends BaseDao{
         String sql="delete from humanos where idHumanos=?";
         try(Connection conn= this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql);){
-            pstmt.setString(1, id);
+            pstmt.setString(1,id);
             pstmt.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
