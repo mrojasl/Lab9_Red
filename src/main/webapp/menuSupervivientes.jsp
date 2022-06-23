@@ -42,7 +42,7 @@
 
 <div class="container">
   <div class="d-flex flex-row bd-highlight mb-1">
-    <p class="titulo">Menú de Supervivientes</p>
+    <p class="titulo">Menú de Supervivientes <img src="supervivencia.png" alt="Haunt" style="width: 55px;height: 55px"> </p>
 
 
   </div>

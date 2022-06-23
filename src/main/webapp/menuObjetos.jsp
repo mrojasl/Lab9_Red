@@ -40,7 +40,7 @@
 <div class="container">
 
     <div class="d-flex flex-row bd-highlight mb-1">
-        <p class="titulo">Menú de Objetos</p>
+        <p class="titulo">Menú de Objetos  <img src="objetos.png" alt="Haunt" style="width: 65px;height: 55px"></p>
     </div>
 
     <div class="p-2">

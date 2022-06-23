@@ -46,7 +46,7 @@
 
 
     <div class="d-flex flex-row bd-highlight mb-1">
-        <p class="titulo">Menú de Virus</p>
+        <p class="titulo">Menú de Virus <img src="viruz.png" alt="Haunt" style="width: 59px;height: 55px"></p>
     </div>
 
     <div class="p-2">

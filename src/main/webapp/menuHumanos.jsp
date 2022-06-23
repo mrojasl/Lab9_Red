@@ -25,7 +25,7 @@
 
 <div class="container">
   <div class="d-flex flex-row bd-highlight mb-1">
-    <p class="titulo">Menú de Humanos</p>
+    <p class="titulo">Menú de Humanos <img src="totalista.png" alt="Haunt" style="width: 65px;height: 55px"></p>
   </div>
   <table class="table table-hover table-dark">
     <thead>

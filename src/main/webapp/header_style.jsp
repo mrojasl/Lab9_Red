@@ -22,7 +22,7 @@
         <a href="<%=request.getContextPath()%>/?action=listar" class="my-1 mx-1"><button type="button" class="btn btn-outline-info">   Humanos <i class="bi bi-person-badge-fill"></i>️</button> </a>
         <a href="<%=request.getContextPath()+"/?action=Supervivientes"%>" class="my-1 mx-1"><button type="button" class="btn btn-outline-success"> Supervivientes <i class="bi bi-person-heart"></i>️</button> </a>
         <a href="<%=request.getContextPath()%>/?action=Virus" class="my-1 mx-1"><button type="button" class="btn btn-outline-warning"> Virus <i class="bi bi-bug-fill"></i>️</button> </a>
-        <a href="<%=request.getContextPath()%>/?action=Zombies" class="my-1 mx-1"><button type="button" class="btn btn-outline-dark"> Zombies <i class="bi bi-person-x-fill"></i>️</button> </a>
+        <a href="<%=request.getContextPath()%>/?action=Zombies" class="my-1 mx-1"><button type="button" class="btn btn-outline-primary" > Zombies <i class="bi bi-person-x-fill"></i>️</button> </a>
         <a href="<%=request.getContextPath()%>/?action=Objetos" class="my-1 mx-1"><button type="button" class="btn btn-outline-light"> Objetos <i class="bi bi-eyedropper"></i> ️</button> </a>
         <a href="<%=request.getContextPath()%>/?action=Caceria" class="my-1 mx-1"><button type="button" class="btn btn-outline-danger"> Cacería ⚔️</button> </a>
     </div>

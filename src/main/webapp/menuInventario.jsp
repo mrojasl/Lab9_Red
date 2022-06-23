@@ -40,7 +40,7 @@
 <div class="container">
 
     <div class="d-flex flex-row bd-highlight mb-1">
-        <p class="titulo">Inventario del Superviviente, <%=superviviente.getNombre()%></p>
+        <p class="titulo">Inventario del Superviviente, <%=superviviente.getNombre()%>  <img src="inventario.png" alt="Haunt" style="width: 55px;height: 55px"></p>
     </div>
     <!--BOOTSTRAP ADVERTENCIAS-->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
