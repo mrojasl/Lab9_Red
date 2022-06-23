@@ -336,7 +336,6 @@ public class ApocalipsisServlet extends HttpServlet {
                 double peso = Double.parseDouble(request.getParameter("Peso"));
                 mision5Dao.actualizarPeso(peso,idObjeto5);
                 response.sendRedirect(request.getContextPath()+"/?action=Objetos");
-
         }
 
     }

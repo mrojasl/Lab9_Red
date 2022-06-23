@@ -130,6 +130,7 @@ public class Mision6Dao extends BaseDao{
         mision2Dao.eliminarHumano(z.getIdHumano());
     }
     public void convertirSuperAZombie(Superviviente sp, int variante, int tipoZombie){
+        System.out.println(sp.getNombre()+" "+sp.getApellido());
         Mision4Dao mision4Dao= new Mision4Dao();
         mision4Dao.anadirZombie(sp.getNombre(), sp.getApellido(), tipoZombie, variante,sp.getSexo());
         Mision2Dao mision2Dao= new Mision2Dao();

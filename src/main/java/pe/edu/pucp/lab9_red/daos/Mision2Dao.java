@@ -1,5 +1,6 @@
 package pe.edu.pucp.lab9_red.daos;
 
+import org.w3c.dom.ls.LSOutput;
 import pe.edu.pucp.lab9_red.beans.Humano;
 import pe.edu.pucp.lab9_red.beans.Objeto;
 import pe.edu.pucp.lab9_red.beans.Superviviente;
@@ -239,6 +240,7 @@ public class Mision2Dao extends BaseDao{
             }
         }
         String sql="update humanos set nombre=?, apellido=? where idHumanos=?";
+        System.out.println(idPareja+" "+id);
         actualizarSuper(fuerza,peso,id,idPareja);
         try(Connection conn= this.getConnection();
             PreparedStatement pstmt= conn.prepareStatement(sql);){
@@ -265,7 +267,7 @@ public class Mision2Dao extends BaseDao{
                 sql2= "update superviviente set idPareja=null where idHumanos=?";
                 try(Connection conn= this.getConnection();
                     PreparedStatement pstmt= conn.prepareStatement(sql2);){
-                    pstmt.setString(1,idPareja);
+                    pstmt.setString(1,obtenerIdPareja(id));
                     pstmt.executeUpdate();
                 }catch (SQLException e) {
                     e.printStackTrace();
